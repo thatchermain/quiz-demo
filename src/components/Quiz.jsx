@@ -13,11 +13,7 @@ const Quiz = () => {
       {!showQuiz ? (
         <div className='intro'>
           <h1 className='intro__title'>Quiz Demo</h1>
-          <h4 className='intro__description'>
-            {' '}
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni,
-            facilis.{' '}
-          </h4>
+          <h4 className='intro__description'> 4 pytania. </h4>
           <button className='intro__btn' onClick={startQuizHandler}>
             Start
           </button>

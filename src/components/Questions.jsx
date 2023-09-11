@@ -129,7 +129,9 @@ const Questions = () => {
                 className='questions__next--btn'
                 onClick={questionHandler}
               >
-                Następne pytanie
+                {currentQuestion === questions.length - 1 && questionAnswered
+                  ? 'Zakończ'
+                  : 'Następne pytanie'}
               </button>
             </div>
           </div>
