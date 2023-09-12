@@ -1,28 +1,23 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../styles/questions.scss';
-import questions from '../data/questions';
 
-const Questions = () => {
+const Questions = ({ questions }) => {
   //STATES
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showScore, setShowScore] = useState(false);
   const [disabled, setDisabled] = useState(false);
   const [score, setScore] = useState(0);
   const [clickedAnswer, setClickedAnswer] = useState(false);
-  // const [selectedAnswer, setSelectedAnswer] = useState(null);
+
   const [questionAnswered, setQuestionAnswered] = useState(false);
   const [correctAnswer, setCorrectAnswer] = useState(0);
   const [wrongAnswer, setWrongAnswer] = useState(0);
-
-  //VARIABLES
 
   //HANDLERS
   const questionHandler = (answer) => {
     setQuestionAnswered(false);
     setClickedAnswer(null);
     setDisabled(false);
-    // setSelectedAnswer(false);
-    // setCorrectAnswer(null);
     if (currentQuestion + 1 < questions.length) {
       setCurrentQuestion(currentQuestion + 1);
     } else {
@@ -38,10 +33,7 @@ const Questions = () => {
     answer.isCorrect === 'true'
       ? setCorrectAnswer(true)
       : setCorrectAnswer(false);
-    // answer.isCorrect === 'true' ? console.log(score + 1) : console.log(score);
     answer.isCorrect === 'true' ? correctAnswerHandler() : wrongAnswerHandler();
-    // setSelectedAnswer(id);
-    // setSelectedAnswer(true);
   };
 
   const correctAnswerHandler = () => {
@@ -70,14 +62,17 @@ const Questions = () => {
             <h4>
               Pytanie {currentQuestion + 1} z {questions.length}{' '}
             </h4>
-            {/* <h4>Wynik: {score}</h4>
-            <h4>Poprawne: {correctAnswer}</h4>
-            <h4>Błędne: {wrongAnswer}</h4> */}
             <br />
             <br />
             <h3 className='questions__question'>
               {questions[currentQuestion].text}
             </h3>
+            <div className='questions__image'>
+              {questions[currentQuestion].image && (
+                <img src={questions[currentQuestion].image} alt='pic' />
+              )}
+            </div>
+
             <ul className='questions__answers'>
               {questions[currentQuestion].answers.map((answer) => {
                 return (
@@ -86,28 +81,27 @@ const Questions = () => {
                       onClick={() => selectAnswerHandler(answer)}
                       disabled={disabled}
                       className={`questions__answer--btn 
-                      ${
-                        clickedAnswer === answer.id &&
-                        answer.isCorrect === 'true'
-                          ? 'correct'
-                          : ''
-                      } 
-                      ${
-                        questionAnswered &&
-                        answer.id &&
-                        answer.isCorrect === 'true'
-                          ? 'correct'
-                          : ''
-                      } 
-                      ${
-                        clickedAnswer === answer.id &&
-                        answer.isCorrect === 'false'
-                          ? 'incorrect'
-                          : ''
-                      } 
-                     
-               
-                      `}
+                    ${
+                      clickedAnswer === answer.id && answer.isCorrect === 'true'
+                        ? 'correct'
+                        : ''
+                    } 
+                        ${
+                          questionAnswered &&
+                          answer.id &&
+                          answer.isCorrect === 'true'
+                            ? 'correct'
+                            : ''
+                        } 
+                        ${
+                          clickedAnswer === answer.id &&
+                          answer.isCorrect === 'false'
+                            ? 'incorrect'
+                            : ''
+                        } 
+                        
+                        
+                        `}
                     >
                       {answer.text}
                     </button>
@@ -116,14 +110,6 @@ const Questions = () => {
               })}
             </ul>
             <div className='questions__buttons'>
-              {/* <button
-                disabled={!selectedAnswer}
-                className='questions__confirm--btn'
-                // onClick={(answer) => confirmAnswerHandler(answer)}
-                onClick={() => confirmAnswerHandler(answers[currentQuestion].answer.isCorrect)}
-              >
-                Potwierdź
-              </button> */}
               <button
                 disabled={!questionAnswered}
                 className='questions__next--btn'

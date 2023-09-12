@@ -1,5 +1,5 @@
 .questions {
-  width: 50vw;
+  width: 70vw;
 
   display: flex;
   flex-direction: column;
@@ -21,7 +21,17 @@
       cursor: pointer;
       padding: 1rem;
       border-radius: 30px;
-      width: 100%;
+      width: 60%;
+    }
+  }
+  &__image {
+    margin: 0 auto;
+    max-width: 600px;
+    max-height: 250px;
+    text-align: center;
+    & img {
+      max-width: 100%;
+      height: 100%;
     }
   }
   &__buttons {
