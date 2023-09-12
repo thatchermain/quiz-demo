@@ -5,7 +5,9 @@ import Questions from './Questions';
 const Quiz = () => {
   const [showQuiz, setShowQuiz] = useState(false);
   const [questions, setQuestions] = useState({});
-
+  window.onbeforeunload = function () {
+    return '';
+  };
   useEffect(() => {
     const fetchHandler = async () => {
       const response = await fetch(
