@@ -125,10 +125,15 @@ const Questions = ({ questions }) => {
       ) : (
         <div>
           <h1>Wynik: {score} pkt.</h1>
-          <h1>Prawidłowe: {correctAnswer} pkt.</h1>
-          <h1>Błędne: {wrongAnswer} pkt.</h1>
           <br />
-          <button onClick={resetQuizHandler}>Spróbuj ponownie</button>
+          <h1>Odp. prawidłowe: {correctAnswer}</h1>
+          <br />
+          <h1>Odp. błędne: {wrongAnswer} </h1>
+          <br />
+          <br />
+          <button onClick={resetQuizHandler} className='questions__next--btn'>
+            Spróbuj ponownie
+          </button>
         </div>
       )}
     </>
