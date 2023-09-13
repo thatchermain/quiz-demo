@@ -8,7 +8,6 @@ const Questions = ({ questions }) => {
   const [disabled, setDisabled] = useState(false);
   const [score, setScore] = useState(0);
   const [clickedAnswer, setClickedAnswer] = useState(false);
-
   const [questionAnswered, setQuestionAnswered] = useState(false);
   const [correctAnswer, setCorrectAnswer] = useState(0);
   const [wrongAnswer, setWrongAnswer] = useState(0);
@@ -25,6 +24,7 @@ const Questions = ({ questions }) => {
       setShowScore(true);
     }
   };
+
   const selectAnswerHandler = (answer) => {
     setDisabled(true);
     setClickedAnswer(answer.id);

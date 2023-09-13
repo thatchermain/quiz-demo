@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import _ from 'lodash';
 import '../styles/quiz.scss';
 import Questions from './Questions';
 
@@ -14,9 +15,11 @@ const Quiz = () => {
         'https://raw.githubusercontent.com/thatchermain/fakeApiServer/main/db.json'
       );
       const data = await response.json();
-      console.log(data);
-      data && setQuestions(data);
-      console.log(questions);
+      // console.log(data);
+      const shuffledData = _.shuffle(data);
+      data && setQuestions(shuffledData);
+      // console.log(questions);
+      // console.log(shuffledData);
     };
 
     fetchHandler();
