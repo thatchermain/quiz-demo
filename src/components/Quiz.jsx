@@ -2,36 +2,51 @@ import React, { useEffect, useState } from 'react';
 import _ from 'lodash';
 import '../styles/quiz.scss';
 import Questions from './Questions';
+import MainTimer from './MainTimer';
 
 const Quiz = () => {
   const [showQuiz, setShowQuiz] = useState(false);
   const [questions, setQuestions] = useState({});
+  const [quizStarted, setQuizStarted] = useState(false);
   window.onbeforeunload = function () {
     return '';
   };
+  function shuffleArray(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  }
   useEffect(() => {
     const fetchHandler = async () => {
       const response = await fetch(
         'https://raw.githubusercontent.com/thatchermain/fakeApiServer/main/db.json'
       );
       const data = await response.json();
-      // console.log(data);
-      const shuffledData = _.shuffle(data);
-      data && setQuestions(shuffledData);
-      // console.log(questions);
-      // console.log(shuffledData);
+      data && setQuestions(data);
     };
 
     fetchHandler();
+    console.log(questions);
   }, []);
 
   const startQuizHandler = () => {
-    setShowQuiz(true);
-  };
+    const shuffledQuestions = questions.map((question) => ({
+      ...question,
+      answers: shuffleArray(question.answers),
+    }));
 
+    setQuestions(_.shuffle(shuffledQuestions));
+    setShowQuiz(true);
+    setQuizStarted(true);
+  };
+  const handleTimeout = () => {
+    // alert('Time is up! Quiz completed.');
+  };
   return (
     <div className='container'>
-      {!showQuiz ? (
+      {!showQuiz && !quizStarted ? (
         <div className='intro'>
           <h1 className='intro__title'>Quiz Demo</h1>
           <h4 className='intro__description'> </h4>
@@ -40,7 +55,10 @@ const Quiz = () => {
           </button>
         </div>
       ) : (
-        <Questions questions={questions} />
+        <>
+          {/* <Timer time={10} onTimeout={handleTimeout}></Timer> */}
+          <Questions questions={questions} onTimeout={handleTimeout} />
+        </>
       )}
     </div>
   );
