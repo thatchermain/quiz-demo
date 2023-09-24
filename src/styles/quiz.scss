@@ -35,8 +35,28 @@
     border-radius: 30px;
     transition: all 0.3s ease-in;
     cursor: pointer;
+    &:disabled {
+      pointer-events: all !important;
+      cursor: not-allowed;
+      &:hover {
+        background-color: transparent;
+      }
+    }
     &:hover {
       background-color: #ffcd00;
     }
+  }
+}
+.input {
+  width: 400px;
+  height: 70px;
+  font-size: 2rem;
+  border: 2px solid #ffcd00;
+  border-radius: 20px;
+  padding: 10px;
+  &:focus {
+    border: 2 px solid #ffcd00;
+    outline: #ffcd00;
+    caret-color: #ffcd00;
   }
 }

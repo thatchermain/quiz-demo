@@ -2,8 +2,9 @@ import React, { useEffect, useRef, useState } from 'react';
 import '../styles/questions.scss';
 import MainTimer from './MainTimer';
 import QuestionTimer from './QuestionTimer';
+import { initial } from 'lodash';
 
-const Questions = ({ questions, onTimeout }) => {
+const Questions = ({ questions, onTimeout, user }) => {
   //STATES
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showScore, setShowScore] = useState(false);
@@ -18,6 +19,13 @@ const Questions = ({ questions, onTimeout }) => {
   const [timerKey, setTimerKey] = useState(0);
   const [resetTimer, setResetTimer] = useState(false);
   const [resetQuestionTimer, setResetQuestionTimer] = useState(false);
+  const [results, setResults] = useState({
+    user: user,
+    numberOfQuestionsAnswered: numberOfQuestionsAnswered,
+    correctAnswer: correctAnswer,
+    wrongAnswer: wrongAnswer,
+    score: score,
+  });
 
   //HANDLERS
   const questionHandler = (answer) => {
@@ -65,7 +73,6 @@ const Questions = ({ questions, onTimeout }) => {
     setWrongAnswer(0);
   };
   const handleTimeout = () => {
-    // alert('Time is up! Quiz completed.');
     setShowScore(true);
   };
   const handleQuestionTimeout = () => {
@@ -81,12 +88,46 @@ const Questions = ({ questions, onTimeout }) => {
     setClickedAnswer(null);
     setDisabled(false);
   };
+
+  const nextQuestionHandler = () => {
+    handleQuestionTimeout();
+  };
+
+  const sendResultsHandler = () => {
+    setResults({
+      ...results,
+      user: user,
+      numberOfQuestionsAnswered: numberOfQuestionsAnswered,
+      correctAnswer: correctAnswer,
+      wrongAnswer: wrongAnswer,
+      score: score,
+    });
+  };
+
+  const finishHandler = async (e) => {
+    e.preventDefault();
+    fetch('https://reqres.in/api/users', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ results }),
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((error) => console.error('Error:', error));
+    console.log(user);
+    console.log(numberOfQuestionsAnswered);
+    console.log(results);
+  };
+
+  /////////////////////////
   const timerRef = useRef(null);
   useEffect(() => {
     if (currentQuestion < questions.length) {
       timerRef.current = setTimeout(() => {
         handleQuestionTimeout();
-      }, questions[currentQuestion].time * 10000); // Convert seconds to milliseconds
+      }, questions[currentQuestion].time * 10000);
 
       return () => clearTimeout(timerRef.current);
     }
@@ -98,7 +139,11 @@ const Questions = ({ questions, onTimeout }) => {
         <div className='questions__container'>
           <div className='main__info'>
             <div>
-              <MainTimer time={250} onTimeout={handleTimeout}></MainTimer>
+              {/* <MainTimer time={250} onTimeout={handleTimeout}></MainTimer> */}
+              <QuestionTimer
+                time={250}
+                onTimeout={handleTimeout}
+              ></QuestionTimer>
             </div>
             <QuestionTimer
               key={timerKey}
@@ -125,6 +170,16 @@ const Questions = ({ questions, onTimeout }) => {
               </div>
             </div>
             <ul className='questions__answers'>
+              <button
+                onClick={nextQuestionHandler}
+                className='questions__next--btn'
+                disabled={!questionAnswered}
+              >
+                Następne pytanie
+              </button>
+              <br />
+              <br />
+
               {questions[currentQuestion].answers.map((answer, id) => {
                 return (
                   <li key={answer.id} className='questions__answer'>
@@ -179,19 +234,29 @@ const Questions = ({ questions, onTimeout }) => {
         <div className='results'>
           <h1>Wynik: {score} pkt.</h1>
           <br />
+          <br />
           <h1>
-            Odpowiedziałeś na {numberOfQuestionsAnswered} z {questions.length}{' '}
-            pytań.
+            {user}, odpowiedziałeś na {numberOfQuestionsAnswered} z{' '}
+            {questions.length} pytań.
           </h1>
+          <br />
           <br />
           <h1>Odpowiedzi prawidłowe: {correctAnswer}</h1>
           <br />
+          <br />
           <h1>Odpowiedzi błędne: {wrongAnswer} </h1>
+          <br />
           <br />
           <br />
           <button onClick={resetQuizHandler} className='questions__next--btn'>
             Spróbuj ponownie
           </button>
+          {/* <button onClick={sendResultsHandler} className='questions__next--btn'>
+            Wyślij Wynik
+          </button>
+          <button onClick={finishHandler} className='questions__next--btn'>
+            Zakończ
+          </button> */}
         </div>
       )}
     </>

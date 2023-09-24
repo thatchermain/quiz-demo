@@ -4,6 +4,7 @@ import '../styles/QuestionTimer.scss';
 const QuestionTimer = ({ key, time, onTimeout }) => {
   const [seconds, setSeconds] = useState(time);
   const timerRef = useRef(null);
+
   useEffect(() => {
     setSeconds(time);
   }, [time]);
@@ -26,16 +27,18 @@ const QuestionTimer = ({ key, time, onTimeout }) => {
   const minutes = Math.floor(seconds / 60);
   const remainingSeconds = seconds % 60;
 
-  // Format minutes and seconds with leading zeros
   const formattedMinutes = String(minutes).padStart(2, '0');
   const formattedSeconds = String(remainingSeconds).padStart(2, '0');
-
+  const progress = (seconds / time) * 100;
   return (
     <div className='timer'>
       <p>Czas na odpowiedź: </p>
       <span>
         {formattedMinutes}:{formattedSeconds}
       </span>
+      {/* <div className='progress-bar'>
+        <div className='progress' style={{ width: `${progress}%` }}></div>
+      </div> */}
     </div>
   );
 };

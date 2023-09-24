@@ -5,11 +5,17 @@ import Questions from './Questions';
 import MainTimer from './MainTimer';
 
 const Quiz = () => {
+  const [user, setUser] = useState();
   const [showQuiz, setShowQuiz] = useState(false);
   const [questions, setQuestions] = useState({});
   const [quizStarted, setQuizStarted] = useState(false);
+  const [ready, setReady] = useState(false);
   window.onbeforeunload = function () {
     return '';
+  };
+  const userHandler = (event) => {
+    setUser(event.target.value);
+    setReady(true);
   };
   function shuffleArray(arr) {
     for (let i = arr.length - 1; i > 0; i--) {
@@ -49,15 +55,32 @@ const Quiz = () => {
       {!showQuiz && !quizStarted ? (
         <div className='intro'>
           <h1 className='intro__title'>Quiz Demo</h1>
-          <h4 className='intro__description'> </h4>
-          <button className='intro__btn' onClick={startQuizHandler}>
+          <h3>Wpisz imię i nazwisko lub e-mail i naciśnij START.</h3>
+          <input
+            className='input'
+            type='text'
+            spellCheck='false'
+            value={user}
+            onChange={userHandler}
+          />
+
+          <h4 className='intro__description'></h4>
+          <button
+            className='intro__btn'
+            onClick={startQuizHandler}
+            disabled={!ready}
+          >
             Start
           </button>
         </div>
       ) : (
         <>
           {/* <Timer time={10} onTimeout={handleTimeout}></Timer> */}
-          <Questions questions={questions} onTimeout={handleTimeout} />
+          <Questions
+            questions={questions}
+            onTimeout={handleTimeout}
+            user={user}
+          />
         </>
       )}
     </div>
