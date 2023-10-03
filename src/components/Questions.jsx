@@ -141,11 +141,13 @@ const Questions = ({ questions, onTimeout, user }) => {
             <div>
               {/* <MainTimer time={250} onTimeout={handleTimeout}></MainTimer> */}
               <QuestionTimer
+                title='Czas do końca testu: '
                 time={250}
                 onTimeout={handleTimeout}
               ></QuestionTimer>
             </div>
             <QuestionTimer
+              title='Czas na odpowiedź: '
               key={timerKey}
               time={questions[currentQuestion].time}
               onTimeout={handleQuestionTimeout}

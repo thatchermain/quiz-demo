@@ -6,6 +6,7 @@ import MainTimer from './MainTimer';
 
 const Quiz = () => {
   const [user, setUser] = useState();
+  const [hints, setHints] = useState(true);
   const [showQuiz, setShowQuiz] = useState(false);
   const [questions, setQuestions] = useState({});
   const [quizStarted, setQuizStarted] = useState(false);
@@ -54,24 +55,59 @@ const Quiz = () => {
     <div className='container'>
       {!showQuiz && !quizStarted ? (
         <div className='intro'>
-          <h1 className='intro__title'>Quiz Demo</h1>
-          <h3>Wpisz imię i nazwisko lub e-mail i naciśnij START.</h3>
-          <input
-            className='input'
-            type='text'
-            spellCheck='false'
-            value={user}
-            onChange={userHandler}
-          />
+          {hints ? (
+            <>
+              <h1 className='intro__title'>Quiz Demo</h1>
+              <br />
+              <br />
+              <div className='intro__clues'>
+                <h2 className='intro__clue'>
+                  Test składa się z <span className='intro__span'>25</span>{' '}
+                  pytań zamkniętych.
+                </h2>
+                <h2 className='intro__clue'>
+                  Za każdą prawidłową odpowiedź można uzyskać{' '}
+                  <span className='intro__span'>1</span> punkt.
+                </h2>
+                <h2 className='intro__clue'>
+                  Podczas testu nie można korzystaćz żadnych dodatkowych pomocy.
+                </h2>
+                <h2 className='intro__clue'>
+                  Czas na rozwiązanie testu:{' '}
+                  <span className='intro__span'>20</span> minut.
+                </h2>
+                <h2 className='intro__clue'>
+                  Liczba punktów możliwych do uzyskania:{' '}
+                  <span className='intro__span'>25</span>.
+                </h2>
+              </div>
+              <br />
+              <br />
+              <button className='intro__btn' onClick={() => setHints(false)}>
+                Dalej
+              </button>
+            </>
+          ) : (
+            <>
+              <h2>Wpisz imię i nazwisko lub e-mail i naciśnij START.</h2>
+              <input
+                className='input'
+                type='text'
+                spellCheck='false'
+                value={user}
+                onChange={userHandler}
+              />
 
-          <h4 className='intro__description'></h4>
-          <button
-            className='intro__btn'
-            onClick={startQuizHandler}
-            disabled={!ready}
-          >
-            Start
-          </button>
+              <h4 className='intro__description'></h4>
+              <button
+                className='intro__btn'
+                onClick={startQuizHandler}
+                disabled={!ready}
+              >
+                Start
+              </button>
+            </>
+          )}
         </div>
       ) : (
         <>

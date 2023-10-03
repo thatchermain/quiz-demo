@@ -60,3 +60,15 @@
     caret-color: #ffcd00;
   }
 }
+.intro__clues {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.intro__clue {
+  position: relative;
+}
+.intro__span {
+  font-size: 1.8rem;
+  color: red;
+}

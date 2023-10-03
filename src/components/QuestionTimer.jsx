@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import '../styles/QuestionTimer.scss';
 
-const QuestionTimer = ({ key, time, onTimeout }) => {
+const QuestionTimer = ({ key, time, onTimeout, title }) => {
   const [seconds, setSeconds] = useState(time);
   const timerRef = useRef(null);
 
@@ -32,7 +32,8 @@ const QuestionTimer = ({ key, time, onTimeout }) => {
   const progress = (seconds / time) * 100;
   return (
     <div className='timer'>
-      <p>Czas na odpowiedź: </p>
+      {/* <p>Czas na odpowiedź: </p> */}
+      <p>{title}</p>
       <span>
         {formattedMinutes}:{formattedSeconds}
       </span>
