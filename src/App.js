@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import Quiz from './components/Quiz';
 
 function App() {

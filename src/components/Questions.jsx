@@ -1,8 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import '../styles/questions.scss';
-import MainTimer from './MainTimer';
+import FinalImg from '../assets/final.png';
+// import MainTimer from './MainTimer';
 import QuestionTimer from './QuestionTimer';
-import { initial } from 'lodash';
+// import { initial } from 'lodash';
+// import emailjs from 'emailjs-com';
 
 const Questions = ({ questions, onTimeout, user }) => {
   //STATES
@@ -26,7 +28,8 @@ const Questions = ({ questions, onTimeout, user }) => {
     wrongAnswer: wrongAnswer,
     score: score,
   });
-
+  const [showFinalSummary, setShowFinalSummary] = useState(false);
+  const [showGoodbye, setShowGoodbye] = useState(false);
   //HANDLERS
   const questionHandler = (answer) => {
     setQuestionAnswered(false);
@@ -37,6 +40,7 @@ const Questions = ({ questions, onTimeout, user }) => {
       setCurrentQuestion(currentQuestion + 1);
     } else {
       setCurrentQuestion(0);
+
       setShowScore(true);
     }
   };
@@ -65,13 +69,13 @@ const Questions = ({ questions, onTimeout, user }) => {
     setWrongAnswer(wrongAnswer + 1);
     setCorrectAnswer(correctAnswer);
   };
-  const resetQuizHandler = () => {
-    setCurrentQuestion(0);
-    setShowScore(false);
-    setScore(0);
-    setCorrectAnswer(0);
-    setWrongAnswer(0);
-  };
+  // const resetQuizHandler = () => {
+  //   setCurrentQuestion(0);
+  //   setShowScore(false);
+  //   setScore(0);
+  //   setCorrectAnswer(0);
+  //   setWrongAnswer(0);
+  // };
   const handleTimeout = () => {
     setShowScore(true);
   };
@@ -93,33 +97,54 @@ const Questions = ({ questions, onTimeout, user }) => {
     handleQuestionTimeout();
   };
 
-  const sendResultsHandler = () => {
-    setResults({
-      ...results,
+  const sendResultsHandler = async () => {
+    await setResults({
+      // ...results,
       user: user,
       numberOfQuestionsAnswered: numberOfQuestionsAnswered,
       correctAnswer: correctAnswer,
       wrongAnswer: wrongAnswer,
       score: score,
     });
+    await setShowFinalSummary(true);
+    console.log(results);
   };
 
-  const finishHandler = async (e) => {
-    e.preventDefault();
-    fetch('https://reqres.in/api/users', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ results }),
-    })
-      .then((response) => response.json())
+  const finishHandler = async () => {
+    const data = await {
+      user: user,
+      numberOfQuestionsAnswered: numberOfQuestionsAnswered,
+      correctAnswer: correctAnswer,
+      wrongAnswer: wrongAnswer,
+      score: score,
+    };
+    const results = await fetch(
+      'https://basic-express-server-qlme.onrender.com/sendResults',
+      {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      }
+    );
+    // .then((response) => response.json())
+    await setShowGoodbye(true)
       .then((data) => console.log(data))
       .catch((error) => console.error('Error:', error));
     console.log(user);
     console.log(numberOfQuestionsAnswered);
-    console.log(results);
+    console.log(data);
   };
+
+  const finalClick = () => {
+    finishHandler();
+    setShowGoodbye(true);
+  };
+  /////////////                     TEST             ///////////////////////
+
+  /////////////                     TEST             ///////////////////////
 
   /////////////////////////
   const timerRef = useRef(null);
@@ -234,31 +259,67 @@ const Questions = ({ questions, onTimeout, user }) => {
         </div>
       ) : (
         <div className='results'>
-          <h1>Wynik: {score} pkt.</h1>
-          <br />
-          <br />
-          <h1>
-            {user}, odpowiedziałeś na {numberOfQuestionsAnswered} z{' '}
-            {questions.length} pytań.
-          </h1>
-          <br />
-          <br />
-          <h1>Odpowiedzi prawidłowe: {correctAnswer}</h1>
-          <br />
-          <br />
-          <h1>Odpowiedzi błędne: {wrongAnswer} </h1>
-          <br />
-          <br />
-          <br />
-          <button onClick={resetQuizHandler} className='questions__next--btn'>
-            Spróbuj ponownie
-          </button>
-          {/* <button onClick={sendResultsHandler} className='questions__next--btn'>
-            Wyślij Wynik
-          </button>
-          <button onClick={finishHandler} className='questions__next--btn'>
-            Zakończ
-          </button> */}
+          {!showFinalSummary ? (
+            <>
+              <h1>
+                {' '}
+                <span className='intro__span'> {user}</span> , ukończyłeś test!
+              </h1>
+              {/* <div className='finalImg'>
+                <img src={FinalImg} alt='' />
+              </div> */}
+              <br />
+              <br />
+              <br />
+              <button
+                onClick={sendResultsHandler}
+                // className='questions__next--btn'
+                className='btn'
+              >
+                Poznaj swój wynik
+              </button>
+            </>
+          ) : (
+            <>
+              {!showGoodbye ? (
+                <>
+                  <>
+                    <h1>
+                      <span className='intro__span'> {user}</span> ,
+                      odpowiedziałeś na {numberOfQuestionsAnswered} z{' '}
+                      {questions.length} pytań.
+                    </h1>
+                    <br />
+                    <br />
+                    <h1>Odpowiedzi prawidłowe: {correctAnswer}</h1>
+                    <br />
+                    <br />
+                    <h1>Odpowiedzi błędne: {wrongAnswer} </h1>
+                    <br />
+                    <br />
+                    <h1>
+                      Wynik:{' '}
+                      {Math.ceil((correctAnswer / questions.length) * 100) +
+                        '%'}{' '}
+                    </h1>
+                    <br />
+                    <br />
+                    <button
+                      onClick={finalClick}
+                      // className='questions__next--btn'
+                      className='btn'
+                    >
+                      Zakończ test
+                    </button>
+                  </>
+                </>
+              ) : (
+                <>
+                  <h1>Można zamknąć okno przeglądarki</h1>
+                </>
+              )}
+            </>
+          )}
         </div>
       )}
     </>

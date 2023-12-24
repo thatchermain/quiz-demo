@@ -1,0 +1,122 @@
+[
+    {
+      "id": "1",
+      "text": "Ile wynosi pierwiastek kwadratowy z 25?",
+      "time": "15",
+      "answers": [
+        {"id": "1", "text": "5", "isCorrect": "true"},
+        {"id": "2", "text": "10", "isCorrect": "false"},
+        {"id": "3", "text": "15", "isCorrect": "false"},
+        {"id": "4", "text": "20", "isCorrect": "false"},
+        {"id": "5", "text": "25", "isCorrect": "false"}
+      ]
+    },
+    {
+      "id": "2",
+      "text": "Jak nazywa się liczba, która jest sumą dwóch liczb pierwszych?",
+      "time": "18",
+      "answers": [
+        {"id": "1", "text": "Liczba złożona", "isCorrect": "true"},
+        {"id": "2", "text": "Liczba parzysta", "isCorrect": "false"},
+        {"id": "3", "text": "Liczba nieparzysta", "isCorrect": "false"},
+        {"id": "4", "text": "Liczba pierwsza", "isCorrect": "false"},
+        {"id": "5", "text": "Liczba naturalna", "isCorrect": "false"}
+      ]
+    },
+    {
+      "id": "3",
+      "text": "Jaki jest wynik mnożenia 8 przez 7?",
+      "time": "12",
+      "answers": [
+        {"id": "1", "text": "48", "isCorrect": "false"},
+        {"id": "2", "text": "56", "isCorrect": "true"},
+        {"id": "3", "text": "64", "isCorrect": "false"},
+        {"id": "4", "text": "72", "isCorrect": "false"},
+        {"id": "5", "text": "80", "isCorrect": "false"}
+      ]
+    },
+    {
+      "id": "4",
+      "text": "Co to jest liczba pierwsza?",
+      "time": "14",
+      "answers": [
+        {"id": "1", "text": "Liczba podzielna przez 2", "isCorrect": "false"},
+        {"id": "2", "text": "Liczba podzielna przez 3", "isCorrect": "false"},
+        {"id": "3", "text": "Liczba podzielna przez 5", "isCorrect": "false"},
+        {"id": "4", "text": "Liczba podzielna tylko przez 1 i samą siebie", "isCorrect": "true"},
+        {"id": "5", "text": "Liczba parzysta", "isCorrect": "false"}
+      ]
+    },
+    {
+      "id": "5",
+      "text": "Ile stopni wynosi suma kątów w trójkącie?",
+      "time": "17",
+      "answers": [
+        {"id": "1", "text": "90", "isCorrect": "false"},
+        {"id": "2", "text": "120", "isCorrect": "false"},
+        {"id": "3", "text": "180", "isCorrect": "true"},
+        {"id": "4", "text": "240", "isCorrect": "false"},
+        {"id": "5", "text": "360", "isCorrect": "false"}
+      ]
+    },
+    {
+      "id": "6",
+      "text": "Jaka jest wartość liczby π (pi) przybliżona do dwóch miejsc po przecinku?",
+      "time": "11",
+      "answers": [
+        {"id": "1", "text": "3.14", "isCorrect": "true"},
+        {"id": "2", "text": "2.71", "isCorrect": "false"},
+        {"id": "3", "text": "1.62", "isCorrect": "false"},
+        {"id": "4", "text": "4.20", "isCorrect": "false"},
+        {"id": "5", "text": "3.50", "isCorrect": "false"}
+      ]
+    },
+    {
+      "id": "7",
+      "text": "Ile wynosi pole prostokąta o bokach 6 i 8?",
+      "time": "20",
+      "answers": [
+        {"id": "1", "text": "12", "isCorrect": "false"},
+        {"id": "2", "text": "24", "isCorrect": "false"},
+        {"id": "3", "text": "30", "isCorrect": "false"},
+        {"id": "4", "text": "48", "isCorrect": "true"},
+        {"id": "5", "text": "54", "isCorrect": "false"}
+      ]
+    },
+    {
+      "id": "8",
+      "text": "Jaki jest wynik dzielenia 64 przez 8?",
+      "time": "16",
+      "answers": [
+        {"id": "1", "text": "4", "isCorrect": "false"},
+        {"id": "2", "text": "6", "isCorrect": "false"},
+        {"id": "3", "text": "8", "isCorrect": "true"},
+        {"id": "4", "text": "10", "isCorrect": "false"},
+        {"id": "5", "text": "12", "isCorrect": "false"}
+      ]
+    },
+    {
+      "id": "9",
+      "text": "Co to jest liczba ułamkowa?",
+      "time": "13",
+      "answers": [
+        {"id": "1", "text": "Liczba całkowita", "isCorrect": "false"},
+        {"id": "2", "text": "Liczba rzeczywista", "isCorrect": "false"},
+        {"id": "3", "text": "Liczba zespolona", "isCorrect": "false"},
+        {"id": "4", "text": "Liczba wykładnicza", "isCorrect": "false"},
+        {"id": "5", "text": "Liczba, która jest ilorazem dwóch liczb całkowitych", "isCorrect": "true"}
+      ]
+    },
+    {
+      "id": "10",
+      "text": "Jak nazywa się teoremat mówiący o stosunku między długościami boków",
+      "time": "19",
+      "answers": [
+        {"id": "1", "text": "Twierdzenie Euklidesa", "isCorrect": "false"},
+        {"id": "2", "text": "Twierdzenie Pitagorasa", "isCorrect": "true"},
+        {"id": "3", "text": "Twierdzenie Fermata", "isCorrect": "false"},
+        {"id": "4", "text": "Twierdzenie Archimedesa", "isCorrect": "false"},
+        {"id": "5", "text": "Twierdzenie Gaussa", "isCorrect": "false"}
+      ]
+    }
+  ]
