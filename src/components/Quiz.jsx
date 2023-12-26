@@ -183,13 +183,13 @@ const Quiz = () => {
                 onChange={userSelectHandler}
               >
                 <option value=''></option>
-                <option value='r1'>Region 1</option>
-                <option value='r2'>Region 2</option>
-                <option value='r3'>Region 3</option>
-                <option value='r4'>Region 4</option>
-                <option value='r5'>Region 5</option>
-                <option value='r6'>Region 6</option>
-                <option value='r7'>Region 7</option>
+                <option value='R1'>Region 1</option>
+                <option value='R2'>Region 2</option>
+                <option value='R3'>Region 3</option>
+                <option value='R4'>Region 4</option>
+                <option value='R5'>Region 5</option>
+                <option value='R6'>Region 6</option>
+                <option value='R7'>Region 7</option>
               </select>
 
               {/* <h4 className='intro__description'></h4> */}
