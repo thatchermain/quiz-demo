@@ -6,7 +6,7 @@ import QuestionTimer from './QuestionTimer';
 // import { initial } from 'lodash';
 // import emailjs from 'emailjs-com';
 
-const Questions = ({ questions, onTimeout, user }) => {
+const Questions = ({ questions, onTimeout, user, region }) => {
   //STATES
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showScore, setShowScore] = useState(false);
@@ -23,6 +23,7 @@ const Questions = ({ questions, onTimeout, user }) => {
   const [resetQuestionTimer, setResetQuestionTimer] = useState(false);
   const [results, setResults] = useState({
     user: user,
+    region: region,
     numberOfQuestionsAnswered: numberOfQuestionsAnswered,
     correctAnswer: correctAnswer,
     wrongAnswer: wrongAnswer,
@@ -30,6 +31,7 @@ const Questions = ({ questions, onTimeout, user }) => {
   });
   const [showFinalSummary, setShowFinalSummary] = useState(false);
   const [showGoodbye, setShowGoodbye] = useState(false);
+  const finalScore = Math.ceil((correctAnswer / questions.length) * 100);
   //HANDLERS
   const questionHandler = (answer) => {
     setQuestionAnswered(false);
@@ -60,12 +62,12 @@ const Questions = ({ questions, onTimeout, user }) => {
   };
 
   const correctAnswerHandler = () => {
-    setScore(score + 1);
+    // setScore(score + 1);
     setCorrectAnswer(correctAnswer + 1);
     setWrongAnswer(wrongAnswer);
   };
   const wrongAnswerHandler = () => {
-    setScore(score);
+    // setScore(score);
     setWrongAnswer(wrongAnswer + 1);
     setCorrectAnswer(correctAnswer);
   };
@@ -98,9 +100,11 @@ const Questions = ({ questions, onTimeout, user }) => {
   };
 
   const sendResultsHandler = async () => {
+    setScore(finalScore);
     await setResults({
       // ...results,
       user: user,
+      region: region,
       numberOfQuestionsAnswered: numberOfQuestionsAnswered,
       correctAnswer: correctAnswer,
       wrongAnswer: wrongAnswer,
@@ -113,6 +117,7 @@ const Questions = ({ questions, onTimeout, user }) => {
   const finishHandler = async () => {
     const data = await {
       user: user,
+      region: region,
       numberOfQuestionsAnswered: numberOfQuestionsAnswered,
       correctAnswer: correctAnswer,
       wrongAnswer: wrongAnswer,
@@ -299,8 +304,8 @@ const Questions = ({ questions, onTimeout, user }) => {
                     <br />
                     <h1>
                       Wynik:{' '}
-                      {Math.ceil((correctAnswer / questions.length) * 100) +
-                        '%'}{' '}
+                      {/* {Math.ceil((correctAnswer / questions.length) * 100) + */}
+                      {score + '%'}{' '}
                     </h1>
                     <br />
                     <br />

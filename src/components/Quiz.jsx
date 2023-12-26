@@ -7,6 +7,7 @@ import MainTimer from './MainTimer';
 
 const Quiz = () => {
   const [user, setUser] = useState('');
+  const [region, setRegion] = useState('');
   const [hints, setHints] = useState(true);
   const [showQuiz, setShowQuiz] = useState(false);
   const [questions, setQuestions] = useState({});
@@ -20,11 +21,24 @@ const Quiz = () => {
   window.onbeforeunload = function () {
     return '';
   };
-  const userHandler = (event) => {
-    setUser(event.target.value);
 
-    setReady(true);
+  // const userNameHandler = (event) => {
+  //   setUser(event.target.value);
+  //   setRegion(event.target.value);
+  // };
+
+  const userHandler = (event) => {
+    if (region !== '' && user !== '') {
+      setReady(true);
+    }
   };
+  const userInputHandler = (e) => {
+    setUser(e.target.value);
+  };
+  const userSelectHandler = (e) => {
+    setRegion(e.target.value);
+  };
+
   function shuffleArray(arr) {
     for (let i = arr.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -50,7 +64,8 @@ const Quiz = () => {
       setTotalTime(overallTime);
     };
     fetchHandler();
-  }, []);
+    userHandler();
+  }, [user, region]);
 
   const startQuizHandler = () => {
     const shuffledQuestions = questions.map((question) => ({
@@ -149,17 +164,33 @@ const Quiz = () => {
             )
           ) : (
             <div className='introduction'>
-              <h2 className='introduction__item'>
-                Wpisz imię i nazwisko lub e-mail i naciśnij przycisk.
-              </h2>
+              <h2 className='introduction__item'>Wpisz imię i nazwisko.</h2>
               <input
                 autoFocus={true}
                 className='input introduction__item'
                 type='text'
                 spellCheck='false'
                 value={user}
-                onChange={userHandler}
+                onChange={userInputHandler}
               />
+              <h2 className='introduction__item'>Wybierz swój region.</h2>
+
+              <select
+                name='region'
+                id='region'
+                className='select'
+                value={region}
+                onChange={userSelectHandler}
+              >
+                <option value=''></option>
+                <option value='r1'>Region 1</option>
+                <option value='r2'>Region 2</option>
+                <option value='r3'>Region 3</option>
+                <option value='r4'>Region 4</option>
+                <option value='r5'>Region 5</option>
+                <option value='r6'>Region 6</option>
+                <option value='r7'>Region 7</option>
+              </select>
 
               {/* <h4 className='intro__description'></h4> */}
               <button
@@ -179,6 +210,7 @@ const Quiz = () => {
             questions={questions}
             onTimeout={handleTimeout}
             user={user}
+            region={region}
             numberOfQuestions={numberOfQuestions}
           />
         </>
