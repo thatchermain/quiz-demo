@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import '../styles/QuestionTimer.scss';
 
-const QuestionTimer = ({ key, time, onTimeout, title }) => {
+const QuestionTimer = ({ time, onTimeout, title }) => {
   const [seconds, setSeconds] = useState(time);
   const timerRef = useRef(null);
 

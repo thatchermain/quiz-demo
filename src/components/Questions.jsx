@@ -11,9 +11,10 @@ const Questions = ({ questions, onTimeout, user, region }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showScore, setShowScore] = useState(false);
   const [disabled, setDisabled] = useState(false);
+  const [showNextButton, setShowNextButton] = useState(true);
   const [score, setScore] = useState(0);
-  const [clickedAnswer, setClickedAnswer] = useState(false);
-  const [selectedAnswer, setSelectedAnswer] = useState();
+  const [clickedAnswer, setClickedAnswer] = useState(null);
+  const [selectedAnswerId, setSelectedAnswerId] = useState(null);
   const [questionAnswered, setQuestionAnswered] = useState(false);
   const [correctAnswer, setCorrectAnswer] = useState(0);
   const [wrongAnswer, setWrongAnswer] = useState(0);
@@ -21,14 +22,25 @@ const Questions = ({ questions, onTimeout, user, region }) => {
   const [timerKey, setTimerKey] = useState(0);
   const [resetTimer, setResetTimer] = useState(false);
   const [resetQuestionTimer, setResetQuestionTimer] = useState(false);
-  const [results, setResults] = useState({
-    user: user,
-    region: region,
-    numberOfQuestionsAnswered: numberOfQuestionsAnswered,
-    correctAnswer: correctAnswer,
-    wrongAnswer: wrongAnswer,
-    score: score,
-  });
+  const [mainResult, setMainResult] = useState([]);
+  const [allQuestions, setAllQuestions] = useState([]);
+  const [finalData, setFinalData] = useState();
+  // let mainResult = [];
+  const [questionResult, setQuestionResult] = useState();
+  // const [results, setResults] = useState({
+  //   user: user,
+  //   region: region,
+  //   numberOfQuestionsAnswered: numberOfQuestionsAnswered,
+  //   correctAnswer: correctAnswer,
+  //   wrongAnswer: wrongAnswer,
+  //   score: score,
+  // });
+  // const [results, setResults] = useState({
+  //   user: user,
+  //   region: region,
+  //   allQuestions: [allQuestions],
+  // });
+
   const [showFinalSummary, setShowFinalSummary] = useState(false);
   const [showGoodbye, setShowGoodbye] = useState(false);
   const finalScore = Math.ceil((correctAnswer / questions.length) * 100);
@@ -48,17 +60,53 @@ const Questions = ({ questions, onTimeout, user, region }) => {
   };
 
   const selectAnswerHandler = (answer) => {
-    setDisabled(true);
-    setSelectedAnswer(answer.id);
-    setClickedAnswer(answer.id);
-    setQuestionAnswered(true);
-    console.log(answer.isCorrect);
-    answer.isCorrect === 'true'
-      ? setCorrectAnswer(true)
-      : setCorrectAnswer(false);
-    answer.isCorrect === 'true' ? correctAnswerHandler() : wrongAnswerHandler();
-    const totalQuestionsAnsered = correctAnswer + wrongAnswer;
-    setNumberOfQuestionsAnswered(totalQuestionsAnsered + 1);
+    setSelectedAnswerId(answer.id);
+    setMainResult((prevResults) =>
+      prevResults.filter(
+        (result) => result.questionText !== questions[currentQuestion].text
+      )
+    );
+
+    const selectedAnswer = answer;
+    let userAnswer = {
+      questionText: questions[currentQuestion].text,
+      answerId: selectedAnswer.id,
+      answerText: selectedAnswer.text,
+      isCorrect: selectedAnswer.isCorrect === 'true',
+    };
+    // questionResult.push(userAnswer);
+
+    // setQuestionResult(null);
+    setQuestionResult(userAnswer);
+    setMainResult((prevResult) => [...prevResult, userAnswer]);
+    const final = mainResult;
+
+    setAllQuestions(final);
+    // console.log('final:  ' + final);
+    // setAllQuestions(final);
+    // setMainResult(userAnswer);
+    console.log(userAnswer);
+    setShowNextButton(false);
+    // setQuestionAnswered(true);
+    // setClickedAnswer(answer.id);
+    // console.log('id ' + answer.id);
+    // answer.isCorrect === 'true' ? correctAnswerHandler() : wrongAnswerHandler();
+    // const clickedAnswer = answer;
+    // clickedAnswer.isCorrect === 'true'
+    //   ? console.log('true')
+    //   : console.log('false');
+    // setSelectedAnswer(clickedAnswer);
+    // console.log(questions[currentQuestion].text);
+
+    // setDisabled(true);
+    // setClickedAnswer(answer.id);
+    // setSelectedAnswer(clickedAnswer);
+    // console.log('selected  ' + selectedAnswer);
+    // answer.isCorrect === 'true'
+    //   ? setCorrectAnswer(true)
+    //   : setCorrectAnswer(false);
+    // const totalQuestionsAnsered = correctAnswer + wrongAnswer;
+    // setNumberOfQuestionsAnswered(totalQuestionsAnsered + 1);
   };
 
   const correctAnswerHandler = () => {
@@ -81,7 +129,7 @@ const Questions = ({ questions, onTimeout, user, region }) => {
   const handleTimeout = () => {
     setShowScore(true);
   };
-  const handleQuestionTimeout = () => {
+  const handleQuestionTimeout = (question, answer) => {
     if (currentQuestion + 1 < questions.length) {
       setCurrentQuestion((prev) => prev + 1);
       setTimerKey((prev) => prev + 1);
@@ -89,49 +137,71 @@ const Questions = ({ questions, onTimeout, user, region }) => {
     } else {
       setShowScore(true);
     }
-    setSelectedAnswer(null);
-    setQuestionAnswered(false);
+    // setSelectedAnswer(clickedAnswer);
+    // setQuestionAnswered(false);
     setClickedAnswer(null);
     setDisabled(false);
+    // console.log(selectedAnswer);
   };
 
-  const nextQuestionHandler = () => {
+  const nextQuestionHandler = (answer, questionResult, userAnswer) => {
     handleQuestionTimeout();
+    setShowNextButton(false);
+    // setResults((prev) => [...prev, mainResult]);
+    // setMainResult((prevResults) => [...prevResults, userAnswer]);
+
+    // setMainResult([...questionResult]);
+    console.log('MainResult  :  ', mainResult);
+
+    const rest = mainResult;
+    console.log('rest  ', rest);
+    setAllQuestions((prev) => rest);
+    // console.log('Clear :  ', new Set(mainResult));
+    // questionResult = [];
   };
 
-  const sendResultsHandler = async () => {
+  const sendResultsHandler = () => {
+    // console.log(results);
     setScore(finalScore);
-    await setResults({
-      // ...results,
+
+    //   // ...results,
+    //   user: user,
+    //   region: region,
+    //   numberOfQuestionsAnswered: numberOfQuestionsAnswered,
+    //   correctAnswer: correctAnswer,
+    //   wrongAnswer: wrongAnswer,
+    //   score: score,
+    // });
+    setShowFinalSummary(true);
+    console.log('allQ : ', allQuestions);
+    const resultsToSend = {
       user: user,
       region: region,
-      numberOfQuestionsAnswered: numberOfQuestionsAnswered,
-      correctAnswer: correctAnswer,
-      wrongAnswer: wrongAnswer,
-      score: score,
-    });
-    await setShowFinalSummary(true);
-    console.log(results);
+      allQuestions: allQuestions,
+    };
+    setFinalData(resultsToSend);
+    console.log('Results : ', resultsToSend);
+    // await setResults({
   };
 
   const finishHandler = async () => {
+    console.log('final Data :  ', finalData);
     const data = await {
       user: user,
       region: region,
-      numberOfQuestionsAnswered: numberOfQuestionsAnswered,
-      correctAnswer: correctAnswer,
-      wrongAnswer: wrongAnswer,
-      score: score,
+      allQuestions: allQuestions,
+      // finalData,
     };
     const results = await fetch(
       'https://basic-express-server-qlme.onrender.com/sendResults',
+      // 'http://localhost:4000/sendResults',
       {
         method: 'POST',
         mode: 'cors',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ finalData }),
       }
     );
     // .then((response) => response.json())
@@ -203,9 +273,11 @@ const Questions = ({ questions, onTimeout, user, region }) => {
             </div>
             <ul className='questions__answers'>
               <button
+                // currentQuestion={questions[currentQuestion].text}
                 onClick={nextQuestionHandler}
                 className='questions__next--btn'
-                disabled={!questionAnswered}
+                // disabled={!questionAnswered}
+                disabled={showNextButton}
               >
                 Następne pytanie
               </button>
@@ -216,32 +288,34 @@ const Questions = ({ questions, onTimeout, user, region }) => {
                 return (
                   <li key={answer.id} className='questions__answer'>
                     <button
-                      selectedAnswer={selectedAnswer === id}
+                      // clickedAnswer={clickedAnswer === id}
+                      quest={questions[currentQuestion]}
+                      // selectedAnswer={selectedAnswer === id}
+                      // onClick={() => selectAnswerHandler(answer)}
                       onClick={() => selectAnswerHandler(answer)}
                       disabled={disabled}
-                      className={`questions__answer--btn 
-                      ${
-                        clickedAnswer === answer.id &&
-                        answer.isCorrect === 'true'
-                          ? 'correct'
-                          : ''
-                      } 
-                      ${
-                        questionAnswered &&
-                        answer.id &&
-                        answer.isCorrect === 'true'
-                          ? 'correct'
-                          : ''
-                      } 
-                      ${
-                        clickedAnswer === answer.id &&
-                        answer.isCorrect === 'false'
-                          ? 'incorrect'
-                          : ''
-                      } 
-                      
-                      
-                      `}
+                      className={`questions__answer--btn `}
+                      // ${
+                      //   clickedAnswer === answer.id &&
+                      //   answer.isCorrect === 'true'
+                      //     ? 'correct'
+                      //     : ''
+                      // }
+                      // ${
+                      //   questionAnswered &&
+                      //   answer.id &&
+                      //   answer.isCorrect === 'true'
+                      //     ? 'correct'
+                      //     : ''
+                      // }
+                      // ${
+                      //   clickedAnswer === answer.id &&
+                      //   answer.isCorrect === 'false'
+                      //     ? 'incorrect'
+                      //     : ''
+                      // }
+
+                      // `}
                     >
                       {answer.text}
                     </button>
@@ -290,8 +364,9 @@ const Questions = ({ questions, onTimeout, user, region }) => {
                 <>
                   <>
                     <h1>
+                      WYŚWIETLANIE WYNIKÓW DO PRZEROBIENIA
                       {/* <span className='intro__span'> {user}</span> , */}
-                      Odpowiedziałeś na {numberOfQuestionsAnswered} z{' '}
+                      {/* Odpowiedziałeś na {numberOfQuestionsAnswered} z{' '}
                       {questions.length} pytań.
                     </h1>
                     <br />
@@ -303,9 +378,9 @@ const Questions = ({ questions, onTimeout, user, region }) => {
                     <br />
                     <br />
                     <h1>
-                      Wynik:{' '}
+                      Wynik:{' '} */}
                       {/* {Math.ceil((correctAnswer / questions.length) * 100) + */}
-                      {score + '%'}{' '}
+                      {/* {score + '%'}{' '} */}
                     </h1>
                     <br />
                     <br />

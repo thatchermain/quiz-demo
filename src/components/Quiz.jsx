@@ -173,7 +173,7 @@ const Quiz = () => {
             )
           ) : (
             <div className='introduction'>
-              <h2 className='introduction__item'>Wpisz identyfikator.</h2>
+              <h2 className='introduction__item'>Nr w BeeOffice.</h2>
               <input
                 autoFocus={true}
                 className='input introduction__item'
@@ -182,7 +182,7 @@ const Quiz = () => {
                 value={user}
                 onChange={userInputHandler}
               />
-              <h2 className='introduction__item'>Wybierz swój region.</h2>
+              <h2 className='introduction__item'>Region.</h2>
 
               <select
                 name='region'
