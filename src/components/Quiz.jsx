@@ -12,6 +12,8 @@ const Quiz = () => {
   const [showQuiz, setShowQuiz] = useState(false);
   const [questions, setQuestions] = useState({});
   const [totalTime, setTotalTime] = useState();
+  const [minTime, setMinTime] = useState();
+  const [maxTime, setMaxTime] = useState();
   const [quizStarted, setQuizStarted] = useState(false);
   const [ready, setReady] = useState(false);
   const [numberOfQuestions, setNumberOfQuestions] = useState();
@@ -60,7 +62,12 @@ const Quiz = () => {
       const overallTime = time.reduce((acc, sum) => {
         return acc + sum;
       }, 0);
-      console.log(overallTime);
+
+      const min = Math.min(...time);
+      const max = Math.max(...time);
+      setMinTime(min);
+      setMaxTime(max);
+
       setTotalTime(overallTime);
     };
     fetchHandler();
@@ -116,7 +123,7 @@ const Quiz = () => {
                   <h2 className='intro__clue'>
                     Czas na udzielenie odpowiedzi na pytanie:{' '}
                     <span className='intro__span'>
-                      {20} - {30}
+                      {minTime} - {maxTime}
                     </span>{' '}
                     sekund.
                   </h2>
