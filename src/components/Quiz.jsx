@@ -106,10 +106,12 @@ const Quiz = () => {
                 <div className='intro__clues'>
                   <h2 className='intro__clue'>
                     Czas na rozwiązanie testu:{' '}
-                    <span className='intro__span'>{`${Math.floor(
-                      totalTime / 60
-                    )} minut i ${totalTime % 60} sekund`}</span>
-                    .
+                    <span className='intro__span'>
+                      {`${Math.floor(totalTime / 60)}`}{' '}
+                    </span>
+                    min. i{' '}
+                    <span className='intro__span'>{`${totalTime % 60}`} </span>
+                    sek.
                   </h2>
                   <h2 className='intro__clue'>
                     Czas na udzielenie odpowiedzi na pytanie:{' '}
@@ -164,7 +166,7 @@ const Quiz = () => {
             )
           ) : (
             <div className='introduction'>
-              <h2 className='introduction__item'>Wpisz imię i nazwisko.</h2>
+              <h2 className='introduction__item'>Wpisz identyfikator.</h2>
               <input
                 autoFocus={true}
                 className='input introduction__item'
@@ -183,13 +185,13 @@ const Quiz = () => {
                 onChange={userSelectHandler}
               >
                 <option value=''></option>
-                <option value='R1'>Region 1</option>
-                <option value='R2'>Region 2</option>
-                <option value='R3'>Region 3</option>
-                <option value='R4'>Region 4</option>
-                <option value='R5'>Region 5</option>
-                <option value='R6'>Region 6</option>
-                <option value='R7'>Region 7</option>
+                <option value='Region 1'>Region 1</option>
+                <option value='Region 2'>Region 2</option>
+                <option value='Region 3'>Region 3</option>
+                <option value='Region 4'>Region 4</option>
+                <option value='Region 5'>Region 5</option>
+                <option value='Region 6'>Region 6</option>
+                <option value='Region 7'>Region 7</option>
               </select>
 
               {/* <h4 className='intro__description'></h4> */}

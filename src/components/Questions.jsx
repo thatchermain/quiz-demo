@@ -290,8 +290,8 @@ const Questions = ({ questions, onTimeout, user, region }) => {
                 <>
                   <>
                     <h1>
-                      <span className='intro__span'> {user}</span> ,
-                      odpowiedziałeś na {numberOfQuestionsAnswered} z{' '}
+                      {/* <span className='intro__span'> {user}</span> , */}
+                      Odpowiedziałeś na {numberOfQuestionsAnswered} z{' '}
                       {questions.length} pytań.
                     </h1>
                     <br />
