@@ -3,6 +3,7 @@ import '../styles/questions.scss';
 import FinalImg from '../assets/final.png';
 // import MainTimer from './MainTimer';
 import QuestionTimer from './QuestionTimer';
+import { set } from 'lodash';
 // import { initial } from 'lodash';
 // import emailjs from 'emailjs-com';
 
@@ -11,14 +12,18 @@ const Questions = ({ questions, onTimeout, user, region }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showScore, setShowScore] = useState(false);
   const [disabled, setDisabled] = useState(false);
-  const [showNextButton, setShowNextButton] = useState(true);
+  // const [showNextButton, setShowNextButton] = useState(true);
   const [isActive, setIsActive] = useState(false);
-  const [score, setScore] = useState(0);
+  const [isCorrect, setIsCorrect] = useState(0);
+
+  const [score, setScore] = useState();
+  const [points, setPoints] = useState(0);
+
   const [clickedAnswer, setClickedAnswer] = useState(null);
   const [selectedAnswerId, setSelectedAnswerId] = useState(null);
   const [questionAnswered, setQuestionAnswered] = useState(false);
-  const [correctAnswer, setCorrectAnswer] = useState(0);
-  const [wrongAnswer, setWrongAnswer] = useState(0);
+  const [correctAnswer, setCorrectAnswer] = useState(100);
+  const [wrongAnswer, setWrongAnswer] = useState(200);
   const [numberOfQuestionsAnswered, setNumberOfQuestionsAnswered] = useState(0);
   const [timerKey, setTimerKey] = useState(0);
   const [resetTimer, setResetTimer] = useState(false);
@@ -63,7 +68,7 @@ const Questions = ({ questions, onTimeout, user, region }) => {
   const selectAnswerHandler = (answer, id) => {
     setIsActive(true);
     setIsActive(id);
-    setSelectedAnswerId(answer.id);
+
     setMainResult((prevResults) =>
       prevResults.filter(
         (result) => result.questionText !== questions[currentQuestion].text
@@ -77,15 +82,16 @@ const Questions = ({ questions, onTimeout, user, region }) => {
       answerText: selectedAnswer.text,
       isCorrect: selectedAnswer.isCorrect === 'true',
     };
+    setSelectedAnswerId(answer.id);
+    setIsCorrect(selectedAnswer.isCorrect === 'true' ? 1 : 0);
     // questionResult.push(userAnswer);
 
     // setQuestionResult(null);
     setQuestionResult(userAnswer);
     setMainResult((prevResult) => [...prevResult, userAnswer]);
     const final = mainResult;
-
     setAllQuestions(final);
-    // selectedAnswer.isCorrect === 'true'
+    // selectedAnswer.id && selectedAnswer.isCorrect === 'true'
     //   ? correctAnswerHandler()
     //   : wrongAnswerHandler();
     // //////console.log('final:  ' + final);
@@ -107,11 +113,15 @@ const Questions = ({ questions, onTimeout, user, region }) => {
     // setClickedAnswer(answer.id);
     // setSelectedAnswer(clickedAnswer);
     // //////console.log('selected  ' + selectedAnswer);
-    isActive && selectedAnswer.isCorrect === 'true'
-      ? correctAnswerHandler()
-      : wrongAnswerHandler();
+    // selectedAnswer.isCorrect === 'true'
+    //   ? setScore((prev) => prev + 1)
+    //   : setScore(score);
     // const totalQuestionsAnsered = correctAnswer + wrongAnswer;
     // setNumberOfQuestionsAnswered(totalQuestionsAnsered + 1);
+    // console.log(' 1 score  ', score);
+    // console.log(selectedAnswerId);
+    // console.log(isCorrect);
+    // setPoints(points);
   };
 
   const correctAnswerHandler = () => {
@@ -134,7 +144,7 @@ const Questions = ({ questions, onTimeout, user, region }) => {
   const handleTimeout = () => {
     setShowScore(true);
   };
-  const handleQuestionTimeout = (question, answer) => {
+  const handleQuestionTimeout = (question, answer, selectedAnswer) => {
     if (currentQuestion + 1 < questions.length) {
       setCurrentQuestion((prev) => prev + 1);
       setTimerKey((prev) => prev + 1);
@@ -142,6 +152,7 @@ const Questions = ({ questions, onTimeout, user, region }) => {
     } else {
       setShowScore(true);
     }
+
     // setSelectedAnswer(clickedAnswer);
     // setQuestionAnswered(false);
     setClickedAnswer(null);
@@ -155,6 +166,11 @@ const Questions = ({ questions, onTimeout, user, region }) => {
     userAnswer,
     selectedAnswer
   ) => {
+    // selectedAnswer && selectedAnswer.isCorrect === 'true'
+    //   ? setScore((prev) => prev + 1)
+    //   : setScore(score);
+
+    // console.log(points);
     setIsActive(null);
     handleQuestionTimeout();
     //////console.log('good ', correctAnswer);
@@ -171,11 +187,18 @@ const Questions = ({ questions, onTimeout, user, region }) => {
     setAllQuestions((prev) => rest);
     // //////console.log('Clear :  ', new Set(mainResult));
     // questionResult = [];
+    // console.log('2  score  ', score);
   };
 
   const sendResultsHandler = () => {
     // //////console.log(results);
+
+    const finalScore = allQuestions.lenght;
+
     setScore(finalScore);
+
+    // console.log('finalscore ', finalScore);
+    // console.log('score ', score);
 
     //   // ...results,
     //   user: user,
@@ -190,10 +213,11 @@ const Questions = ({ questions, onTimeout, user, region }) => {
     const resultsToSend = {
       user: user,
       region: region,
+      score: finalScore,
       allQuestions: allQuestions,
     };
     setFinalData(resultsToSend);
-    //////console.log('Results : ', resultsToSend);
+    // console.log('Results : ', resultsToSend);
     // await setResults({
   };
 
@@ -253,19 +277,19 @@ const Questions = ({ questions, onTimeout, user, region }) => {
           <div className='main__info'>
             <div>
               {/* <MainTimer time={250} onTimeout={handleTimeout}></MainTimer> */}
-              {/* <QuestionTimer
+              <QuestionTimer
                 title='Czas do końca testu: '
                 time={250}
                 onTimeout={handleTimeout}
-              ></QuestionTimer> */}
+              ></QuestionTimer>
             </div>
-            {/* <QuestionTimer
+            <QuestionTimer
               title='Czas na odpowiedź: '
               key={timerKey}
               time={questions[currentQuestion].time}
               onTimeout={handleQuestionTimeout}
               resetKey={resetTimer ? currentQuestion : -1}
-            /> */}
+            />
           </div>
 
           <div className='questions'>
