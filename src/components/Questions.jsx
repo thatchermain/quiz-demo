@@ -12,6 +12,7 @@ const Questions = ({ questions, onTimeout, user, region }) => {
   const [showScore, setShowScore] = useState(false);
   const [disabled, setDisabled] = useState(false);
   const [showNextButton, setShowNextButton] = useState(true);
+  const [isActive, setIsActive] = useState(false);
   const [score, setScore] = useState(0);
   const [clickedAnswer, setClickedAnswer] = useState(null);
   const [selectedAnswerId, setSelectedAnswerId] = useState(null);
@@ -59,7 +60,9 @@ const Questions = ({ questions, onTimeout, user, region }) => {
     }
   };
 
-  const selectAnswerHandler = (answer) => {
+  const selectAnswerHandler = (answer, id) => {
+    setIsActive(true);
+    setIsActive(id);
     setSelectedAnswerId(answer.id);
     setMainResult((prevResults) =>
       prevResults.filter(
@@ -82,29 +85,31 @@ const Questions = ({ questions, onTimeout, user, region }) => {
     const final = mainResult;
 
     setAllQuestions(final);
-    // console.log('final:  ' + final);
+    // selectedAnswer.isCorrect === 'true'
+    //   ? correctAnswerHandler()
+    //   : wrongAnswerHandler();
+    // //////console.log('final:  ' + final);
     // setAllQuestions(final);
     // setMainResult(userAnswer);
-    console.log(userAnswer);
-    setShowNextButton(false);
+    ////////console.log(userAnswer);
+    // setShowNextButton(false);
     // setQuestionAnswered(true);
     // setClickedAnswer(answer.id);
-    // console.log('id ' + answer.id);
-    // answer.isCorrect === 'true' ? correctAnswerHandler() : wrongAnswerHandler();
+    // //////console.log('id ' + answer.id);
     // const clickedAnswer = answer;
     // clickedAnswer.isCorrect === 'true'
-    //   ? console.log('true')
-    //   : console.log('false');
+    //   ? //////console.log('true')
+    //   : //////console.log('false');
     // setSelectedAnswer(clickedAnswer);
-    // console.log(questions[currentQuestion].text);
+    // //////console.log(questions[currentQuestion].text);
 
     // setDisabled(true);
     // setClickedAnswer(answer.id);
     // setSelectedAnswer(clickedAnswer);
-    // console.log('selected  ' + selectedAnswer);
-    // answer.isCorrect === 'true'
-    //   ? setCorrectAnswer(true)
-    //   : setCorrectAnswer(false);
+    // //////console.log('selected  ' + selectedAnswer);
+    isActive && selectedAnswer.isCorrect === 'true'
+      ? correctAnswerHandler()
+      : wrongAnswerHandler();
     // const totalQuestionsAnsered = correctAnswer + wrongAnswer;
     // setNumberOfQuestionsAnswered(totalQuestionsAnsered + 1);
   };
@@ -141,27 +146,35 @@ const Questions = ({ questions, onTimeout, user, region }) => {
     // setQuestionAnswered(false);
     setClickedAnswer(null);
     setDisabled(false);
-    // console.log(selectedAnswer);
+    // //////console.log(selectedAnswer);
   };
 
-  const nextQuestionHandler = (answer, questionResult, userAnswer) => {
+  const nextQuestionHandler = (
+    answer,
+    questionResult,
+    userAnswer,
+    selectedAnswer
+  ) => {
+    setIsActive(null);
     handleQuestionTimeout();
-    setShowNextButton(false);
+    //////console.log('good ', correctAnswer);
+    //////console.log('bad ', wrongAnswer);
+    // setShowNextButton(false);
     // setResults((prev) => [...prev, mainResult]);
     // setMainResult((prevResults) => [...prevResults, userAnswer]);
 
     // setMainResult([...questionResult]);
-    console.log('MainResult  :  ', mainResult);
+    //////console.log('MainResult  :  ', mainResult);
 
     const rest = mainResult;
-    console.log('rest  ', rest);
+    //////console.log('rest  ', rest);
     setAllQuestions((prev) => rest);
-    // console.log('Clear :  ', new Set(mainResult));
+    // //////console.log('Clear :  ', new Set(mainResult));
     // questionResult = [];
   };
 
   const sendResultsHandler = () => {
-    // console.log(results);
+    // //////console.log(results);
     setScore(finalScore);
 
     //   // ...results,
@@ -173,19 +186,19 @@ const Questions = ({ questions, onTimeout, user, region }) => {
     //   score: score,
     // });
     setShowFinalSummary(true);
-    console.log('allQ : ', allQuestions);
+    //////console.log('allQ : ', allQuestions);
     const resultsToSend = {
       user: user,
       region: region,
       allQuestions: allQuestions,
     };
     setFinalData(resultsToSend);
-    console.log('Results : ', resultsToSend);
+    //////console.log('Results : ', resultsToSend);
     // await setResults({
   };
 
   const finishHandler = async () => {
-    console.log('final Data :  ', finalData);
+    //////console.log('final Data :  ', finalData);
     const data = await {
       user: user,
       region: region,
@@ -206,11 +219,11 @@ const Questions = ({ questions, onTimeout, user, region }) => {
     );
     // .then((response) => response.json())
     await setShowGoodbye(true)
-      .then((data) => console.log(data))
+      // .then((data) => //////console.log(data))
       .catch((error) => console.error('Error:', error));
-    console.log(user);
-    console.log(numberOfQuestionsAnswered);
-    console.log(data);
+    //////console.log(user);
+    //////console.log(numberOfQuestionsAnswered);
+    //////console.log(data);
   };
 
   const finalClick = () => {
@@ -240,19 +253,19 @@ const Questions = ({ questions, onTimeout, user, region }) => {
           <div className='main__info'>
             <div>
               {/* <MainTimer time={250} onTimeout={handleTimeout}></MainTimer> */}
-              <QuestionTimer
+              {/* <QuestionTimer
                 title='Czas do końca testu: '
                 time={250}
                 onTimeout={handleTimeout}
-              ></QuestionTimer>
+              ></QuestionTimer> */}
             </div>
-            <QuestionTimer
+            {/* <QuestionTimer
               title='Czas na odpowiedź: '
               key={timerKey}
               time={questions[currentQuestion].time}
               onTimeout={handleQuestionTimeout}
               resetKey={resetTimer ? currentQuestion : -1}
-            />
+            /> */}
           </div>
 
           <div className='questions'>
@@ -275,9 +288,9 @@ const Questions = ({ questions, onTimeout, user, region }) => {
               <button
                 // currentQuestion={questions[currentQuestion].text}
                 onClick={nextQuestionHandler}
-                className='questions__next--btn'
-                // disabled={!questionAnswered}
-                disabled={showNextButton}
+                className='questions__next--btn '
+                // disabled={showNextButton}
+                // disabled={!isActive}
               >
                 Następne pytanie
               </button>
@@ -292,9 +305,13 @@ const Questions = ({ questions, onTimeout, user, region }) => {
                       quest={questions[currentQuestion]}
                       // selectedAnswer={selectedAnswer === id}
                       // onClick={() => selectAnswerHandler(answer)}
-                      onClick={() => selectAnswerHandler(answer)}
+                      onClick={() => selectAnswerHandler(answer, id)}
                       disabled={disabled}
-                      className={`questions__answer--btn `}
+                      // className={`questions__answer--btn `}
+                      className={`questions__answer--btn  ${
+                        isActive === id ? 'clicked' : ''
+                      }`}
+                      isActive={isActive === id}
                       // ${
                       //   clickedAnswer === answer.id &&
                       //   answer.isCorrect === 'true'

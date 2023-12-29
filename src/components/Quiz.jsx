@@ -143,11 +143,11 @@ const Quiz = () => {
                     Istnieje możliwość wyboru tylko jednej odpowiedzi na dane
                     pytanie.
                   </h2>
-                  <h2 className='intro__clue'>
+                  {/* <h2 className='intro__clue'>
                     Po wybraniu odpowiedzi nie ma możliwości zmiany wyboru.
-                  </h2>
+                  </h2> */}
                   <h2 className='intro__clue'>
-                    Nie ma również możliwości powrotu do poprzedniego pytania.{' '}
+                    Nie ma możliwości powrotu do poprzedniego pytania.{' '}
                   </h2>
                   <h2 className='intro__clue'>
                     Podczas testu nie można korzystać z żadnych dodatkowych
