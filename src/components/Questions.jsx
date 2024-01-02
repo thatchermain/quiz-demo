@@ -21,7 +21,7 @@ const Questions = ({ questions, onTimeout, user, region }) => {
   const [finalData, setFinalData] = useState();
   const [showFinalSummary, setShowFinalSummary] = useState(false);
   const [showGoodbye, setShowGoodbye] = useState(false);
-  const finalScore = Math.ceil((correctAnswer / questions.length) * 100);
+  const finalScore = Math.ceil((overallScore / questions.length) * 100);
   //HANDLERS
   const questionHandler = (answer) => {
     setDisabled(false);
@@ -113,6 +113,7 @@ const Questions = ({ questions, onTimeout, user, region }) => {
     setFinalData(resultsToSend);
 
     // await setResults({
+    console.log(resultsToSend);
   };
 
   const finishHandler = async () => {
@@ -160,19 +161,19 @@ const Questions = ({ questions, onTimeout, user, region }) => {
         <div className='questions__container'>
           <div className='main__info'>
             <div>
-              <QuestionTimer
+              {/* <QuestionTimer
                 title='Czas do końca testu: '
                 time={250}
                 onTimeout={handleTimeout}
-              ></QuestionTimer>
+              ></QuestionTimer> */}
             </div>
-            <QuestionTimer
+            {/* <QuestionTimer
               title='Czas na odpowiedź: '
               key={timerKey}
               time={questions[currentQuestion].time}
               onTimeout={handleQuestionTimeout}
               resetKey={resetTimer ? currentQuestion : -1}
-            />
+            /> */}
           </div>
 
           <div className='questions'>
@@ -242,7 +243,21 @@ const Questions = ({ questions, onTimeout, user, region }) => {
               {!showGoodbye ? (
                 <>
                   <>
-                    <h1>WYŚWIETLANIE WYNIKÓW DO PRZEROBIENIA</h1>
+                    <h1>
+                      Odpowiedziałeś prawidłowo na
+                      <span className='intro__span'>
+                        {' '}
+                        {overallScore}
+                      </span> z {questions.length} pytań.
+                    </h1>
+                    <br />
+                    <h1>
+                      Twój wynik to{' '}
+                      <span className='intro__span'>{finalScore} %</span>.
+                    </h1>
+                    <br />
+                    <br />
+                    <br />
                     <br />
                     <br />
                     <button onClick={finalClick} className='btn'>
