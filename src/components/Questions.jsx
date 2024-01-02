@@ -3,7 +3,13 @@ import '../styles/questions.scss';
 
 import QuestionTimer from './QuestionTimer';
 
-const Questions = ({ questions, onTimeout, user, region }) => {
+const Questions = ({
+  questions,
+  onTimeout,
+  user,
+  region,
+  numberOfQuestions,
+}) => {
   //STATES
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showScore, setShowScore] = useState(false);
@@ -89,7 +95,7 @@ const Questions = ({ questions, onTimeout, user, region }) => {
     selectedAnswer
   ) => {
     setOverallScore(overallScore + questionScore);
-    setProcentScore(overallScore / questions.lenght);
+    setProcentScore((overallScore / numberOfQuestions) * 100);
 
     setIsActive(null);
     handleQuestionTimeout();
@@ -108,12 +114,14 @@ const Questions = ({ questions, onTimeout, user, region }) => {
       user: user,
       region: region,
       score: overallScore,
+      procentage: procentScore,
       allQuestions: allQuestions,
     };
     setFinalData(resultsToSend);
 
     // await setResults({
-    console.log(resultsToSend);
+    // console.log(resultsToSend);
+    // console.log(procentScore);
   };
 
   const finishHandler = async () => {
@@ -161,19 +169,19 @@ const Questions = ({ questions, onTimeout, user, region }) => {
         <div className='questions__container'>
           <div className='main__info'>
             <div>
-              {/* <QuestionTimer
+              <QuestionTimer
                 title='Czas do końca testu: '
                 time={250}
                 onTimeout={handleTimeout}
-              ></QuestionTimer> */}
+              ></QuestionTimer>
             </div>
-            {/* <QuestionTimer
+            <QuestionTimer
               title='Czas na odpowiedź: '
               key={timerKey}
               time={questions[currentQuestion].time}
               onTimeout={handleQuestionTimeout}
               resetKey={resetTimer ? currentQuestion : -1}
-            /> */}
+            />
           </div>
 
           <div className='questions'>
