@@ -9,6 +9,7 @@ const Questions = ({
   user,
   region,
   numberOfQuestions,
+  totalTime,
 }) => {
   //STATES
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -94,6 +95,7 @@ const Questions = ({
     userAnswer,
     selectedAnswer
   ) => {
+    setQuestionScore(0);
     setOverallScore(overallScore + questionScore);
     setProcentScore((overallScore / numberOfQuestions) * 100);
 
@@ -171,7 +173,7 @@ const Questions = ({
             <div>
               <QuestionTimer
                 title='Czas do końca testu: '
-                time={250}
+                time={totalTime}
                 onTimeout={handleTimeout}
               ></QuestionTimer>
             </div>

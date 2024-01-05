@@ -1,0 +1,883 @@
+[
+
+{
+	"id": 1,
+	"text": "Najnowszy FW Extender (expander) to:",
+	"time" : 30,
+	"answers": [{
+		"id": 1,
+		"text": "1.04rc4",
+		"isCorrect": "false"
+	}, {
+		"id": 2,
+		"text": "1.04rc1",
+		"isCorrect": "true"
+	}, {
+		"id": 3,
+		"text": "2.04rc1",
+		"isCorrect": "false"
+	}, {
+		"id": 4,
+		"text": "1.03rc1",
+		"isCorrect": "false"
+	}, {
+		"id": 5,
+		"text": "Żaden z wymienonych",
+		"isCorrect": "false"
+	}]
+}, 
+
+{
+	"id": 2,
+	"text": "Do jakiego urządzenia jest podłączony czujnik zalania?",
+	"time" : 30,
+	"answers": [{
+		"id": 1,
+		"text": "Do złącza I/O routera",
+		"isCorrect": "false"
+	}, {
+		"id": 2,
+		"text": "Do sterownika Fatek",
+		"isCorrect": "true"
+	}, {
+		"id": 3,
+		"text": "Do PC",
+		"isCorrect": "false"
+	}, {
+		"id": 4,
+		"text": "Do czujnika wibracji",
+		"isCorrect": "false"
+	}]
+}, 
+
+{
+	"id": 3,
+	"text": "Zaktualizuj firmware routera (maszyna nie jest wyposażona w nDVR). [NEW FM]",
+	"time" : 30,
+	"answers": [{
+		"id": 1,
+		"text": "RDS-03.03-PL-20220518.dat",
+		"isCorrect": "false"
+	}, {
+		"id": 2,
+		"text": "01.01.00.076.ldr",
+		"isCorrect": "false"
+	}, {
+		"id": 3,
+		"text": "firmware_00.02.00.21.binary",
+		"isCorrect": "false"
+	}, {
+		"id": 4,
+		"text": "Żaden z wymienionych",
+		"isCorrect": "true"
+	}]
+},
+
+{
+	"id": 4,
+	"text": "Zaktualizuj program sterownika FATEK, wybierz odpowiedni plik.",
+	"time" : 30,
+	"answers": [{
+		"id": 1,
+		"text": "australia_1_1_0_outdoor.bnc",
+		"isCorrect": "false"
+	}, {
+		"id": 2,
+		"text": "australia_1_1_0_outdoor.fsb",
+		"isCorrect": "true"
+	}, {
+		"id": 3,
+		"text": "australia_1_1_0_outdoor.frd",
+		"isCorrect": "false"
+	}, {
+		"id": 4,
+		"text": "australia_1_1_0_outdoor.inc",
+		"isCorrect": "false"
+	}]
+},
+
+{
+	"id": 5,
+	"text": "Service Application nie wykrywa extendera (expandera) 12L. Z poziomu oprogramowania PM wszystko działa prawidłowo (można otwierać skrytki, moduł jest dodany do layout'u). Co może być tego przyczyną?",
+	"time" : 30,
+	"answers": [{
+		"id": 1,
+		"text": "Brak wtyczki terminującej",
+		"isCorrect": "false"
+	}, {
+		"id": 2,
+		"text": "Uszkodzony jeden z zamków",
+		"isCorrect": "false"
+	}, {
+		"id": 3,
+		"text": "Nieprawidłowa liczba expanderów w configu Service Application",
+		"isCorrect": "true"
+	}, {
+		"id": 4,
+		"text": "Nieaktualny FW expandera",
+		"isCorrect": "false"
+	}]
+},
+
+{
+	"id": 6,
+	"text": "Jakie rozmiary skrytek powinny mieć zaprogramowane zamki w module pralniomatu?",
+	"time" : 30,
+	"answers": [{
+		"id": 1,
+		"text": "Rozmiar E",
+		"isCorrect": "true"
+	}, {
+		"id": 2,
+		"text": "Rozmiar D",
+		"isCorrect": "false"
+	}, {
+		"id": 3,
+		"text": "Rozmiar H",
+		"isCorrect": "false"
+	}, {
+		"id": 4,
+		"text": "Rozmiar O",
+		"isCorrect": "false"
+	}]
+},
+
+{
+	"id": 7,
+	"text": "Za pomocą jakiego standardu transmisji danych komputer łączy się z matrycą? Podaj nazwę standardu. [I SERIA]",
+	"time" : 30,
+	"answers": [{
+		"id": 1,
+		"text": "VGA",
+		"isCorrect": "false"
+	}, {
+		"id": 2,
+		"text": "LVDS",
+		"isCorrect": "true"
+	}, {
+		"id": 3,
+		"text": "RS232",
+		"isCorrect": "false"
+	}, {
+		"id": 4,
+		"text": "RS485",
+		"isCorrect": "false"
+	}]
+},
+
+{
+	"id": 8,
+	"text": "Dysk SSD jest widoczny w BIOSie jako SATAFIRM S11. System nie uruchamia się. Co jest tego przyczyną?",
+	"time" : 30,
+	"answers": [{
+		"id": 1,
+		"text": "Uszkodzony dysk, jest w trybie serwisowym",
+		"isCorrect": "true"
+	}, {
+		"id": 2,
+		"text": "Uszkodzone pliki systemu Windows",
+		"isCorrect": "false"
+	}, {
+		"id": 3,
+		"text": "Nieprawidłowe ustawienia w BIOSie",
+		"isCorrect": "false"
+	}, {
+		"id": 4,
+		"text": "Nieprawidłowa kolejność bootowania",
+		"isCorrect": "false"
+	}]
+},
+
+{
+	"id": 9,
+	"text": "Jakim napięciem są zasilane przyciski pojemnościowe? [NEXT]",
+	"time" : 30,
+	"answers": [{
+		"id": 1,
+		"text": "12 V",
+		"isCorrect": "false"
+	}, {
+		"id": 2,
+		"text": "9 V",
+		"isCorrect": "false"
+	}, {
+		"id": 3,
+		"text": "5 V",
+		"isCorrect": "true"
+	}, {
+		"id": 4,
+		"text": "24 V",
+		"isCorrect": "false"
+	}]
+},
+
+{
+	"id": 10,
+	"text": "Po restarcie prądowym maszyny, PC nie ma zasilania (bezpiecznik oraz przekaźnik są sprawne). Co należy zrobić żeby uruchomić PC? [II SERIA]",
+	"time" : 30,
+	"answers": [{
+		"id": 1,
+		"text": "Wyregulować termostat",
+		"isCorrect": "false"
+	}, {
+		"id": 2,
+		"text": "Zewrzeć dwa piny w wejściu cyfrowym nr 6 górnego sterownika IODA",
+		"isCorrect": "true"
+	}, {
+		"id": 3,
+		"text": "Włączyć PC za pomocą przycisku",
+		"isCorrect": "false"
+	}]
+},
+
+{
+	"id": 11,
+	"text": "Górne kamery działają tylko w nocy. Co może być tego przyczyną?",
+	"time" : 30,
+	"answers": [{
+		"id": 1,
+		"text": "Nieprawidłowo ustawiony tryb pracy za pomocą przełącznika przy kamerach",
+		"isCorrect": "false"
+	}, {
+		"id": 2,
+		"text": "Uszkodzone przewody kamer",
+		"isCorrect": "false"
+	}, {
+		"id": 3,
+		"text": "Są podłączone pod daszkiem do zasilania oświetlenia",
+		"isCorrect": "true"
+	}, {
+		"id": 4,
+		"text": "Nieprawidłowe ustawienia kamer w konfiguracji DVR",
+		"isCorrect": "false"
+	}]
+},
+
+{
+
+	"id": 12,
+	"text": "Do czego służy przycisk BAT ON w zasilaczu Merawex ZMW12V32A?",
+	"time" : 30,
+	"answers": [{
+		"id": 1,
+		"text": "Do uruchomienia maszyny z akumulatora jeżeli nie ma zasilania sieciowego",
+		"isCorrect": "true"
+	}, {
+		"id": 2,
+		"text": "Do wywołania ładowania akumulatora",
+		"isCorrect": "false"
+	}, {
+		"id": 3,
+		"text": "Do przełączenia trybu pracy z zasilania sieciowego na zasilanie z akumulatora w przypadku kiedy maszyna posiada zasilanie sieciowe",
+		"isCorrect": "false"
+		}]
+},
+
+{
+
+	"id": 13,
+	"text": "Które piny we wtyczce RS znajdującej się w puszce Harting odpowiadają za komunikację z extenderami (expanderami)?",
+	"time" : 30,
+	"answers": [{
+		"id": 1,
+		"text": "Piny 3 oraz 7",
+		"isCorrect": "false"
+	}, {
+		"id": 2,
+		"text": "Piny 2 oraz 7",
+		"isCorrect": "false"
+	}, {
+		"id": 3,
+		"text": "Piny 3 oraz 8",
+		"isCorrect": "false"
+	}, {
+		"id": 4,
+		"text": "Piny 3 oraz 8",
+		"isCorrect": "true"
+	}]
+},
+
+{
+	"id": 14,
+	"text": "14. Do którego portu w PC powinien być podłączony sterownik IODA od lewej strony (I seria)?",
+	"time" : 30,
+	"answers": [{
+		"id": 1,
+		"text": "COM 3",
+		"isCorrect": "true"
+	}, {
+		"id": 2,
+		"text": "COM 2",
+		"isCorrect": "false"	
+	}, {
+		"id": 3,
+		"text": "COM 1",
+		"isCorrect": "false"
+	}, {
+		"id": 4,
+		"text": "COM 4",
+		"isCorrect": "false"
+	}]
+},
+
+{
+	"id": 15,
+	"text": "Skaner nie skanuje kodów wyświetlanych na ekranie telefonu. Co może być tego przyczyną? [I seria]",
+	"time" : 30,
+	"answers": [{
+		"id": 1,
+		"text": "Skaner jest uszkodzony",
+		"isCorrect": "false"
+	}, {
+		"id": 2,
+		"text": "Szybka skanera jest brudna",
+		"isCorrect": "false"
+	}, {
+		"id": 3,
+		"text": "Skaner nie posiada takiej funkcji",
+		"isCorrect": "true"
+	}]
+},
+
+{
+	"id": 16,
+	"text": "Moduł 3L nie chce się dodać do layout'u. Zarówno extender (expander) jak i zamki są widoczne w Service Application. Extender (expander) jest sprawny, ma prawidłowy adres oraz liczbę zamków. Zamki są sprawne oraz prawidłowo zaprogramowane. Co może być tego przyczyną? [V seria]",
+	"time" : 30,
+	"answers": [{
+		"id": 1,
+		"text": "Brak wtyczki terminującej",
+		"isCorrect": "false"
+	}, {
+		"id": 2,
+		"text": "Wtyczki RS nie są podłączone do expandera",
+		"isCorrect": "false"
+	}, {
+		"id": 3,
+		"text": "Uszkodzony zamek",
+		"isCorrect": "false"
+	}, {
+		"id": 4,
+		"text": "Expander jest zaprogramowaną na złą stronę",
+		"isCorrect": "true"
+	}]
+},
+
+{
+	"id": 17,
+	"text": "Router łączy się z siecią T-Mobile w technologii 3G, natomiast z siecią Plus w technologii 4G (PM znajduje się w obszarze zasięgu LTE sieci T-Mobile, router ma zamontowany moduł GSM ME909s-120). Co może być przyczyną braku połączenia w technologii LTE?",
+	"time" : 30,
+	"answers": [{
+		"id": 1,
+		"text": "Brak zasięgu 4G",
+		"isCorrect": "false"
+	}, {
+		"id": 2,
+		"text": "Uszkodzony router",
+		"isCorrect": "false"
+	}, {
+		"id": 3,
+		"text": "Karta SIM nieobsługująca 4G",
+		"isCorrect": "true"
+	}]
+},
+
+{
+	"id": 18,
+	"text": "PC po wymianie uruchomił się, ale na ekranie wyświetla się biały obraz (monitor jest sprawny). Dlaczego? [I SERIA]",
+	"time" : 30,
+	"answers": [{
+		"id": 1,
+		"text": "Uszkodzona przetwornica 12/9 V",
+		"isCorrect": "false"
+	}, {
+		"id": 2,
+		"text": "Brak komunikacji z matrycą",
+		"isCorrect": "true"
+	}, {
+		"id": 3,
+		"text": "Uszkodzona przwtwornica 12/5 V",
+		"isCorrect": "false"
+	}, {
+		"id": 4,
+		"text": "Zbyt niskie napięcie na zasilaniu",
+		"isCorrect": "false"
+	}]
+},
+
+{
+	"id": 19,
+	"text": "19. DVR wydaje przerywany sygnał dźwiękowy, nie można się z nim połączyć. Rejestrator, dysk oraz kabel SATA są sprawne. Co może być tego przyczyną?",
+	"time" : 30,
+	"answers": [{
+		"id": 1,
+		"text": "Zbyt niskie napięcie na wejściu zasilania DVRa",
+		"isCorrect": "true"
+	}, {
+		"id": 2,
+		"text": "Zbyt wysokie napięcie na wejściu zasilania DVRa",
+		"isCorrect": "false"
+	}, {
+		"id": 3,
+		"text": "Uszkodzony dysk",
+		"isCorrect": "false"
+	}, {
+		"id": 4,
+		"text": "Uszkodzony rejestrator",
+		"isCorrect": "false"
+	}]
+},
+
+{
+	"id": 20,
+	"text": "Za co jest odpowiedzialny moduł CPH?",
+	"time" : 30,
+	"answers": [{
+		"id": 1,
+		"text": "Za sterowanie zamkami",
+		"isCorrect": "false"
+	}, {
+		"id": 2,
+		"text": "Za odczyt wilgotności",
+		"isCorrect": "true"
+	}, {
+		"id": 3,
+		"text": "Za odczyt napięcia",
+		"isCorrect": "false"
+	}]
+},
+
+{
+	"id": 21,
+	"text": "Czy AZ-112 jest podłączony do LockerBus'a? [V SERIA]",
+	"time" : 30,
+	"answers": [{
+		"id": 1,
+		"text": "Tak",
+		"isCorrect": "true"
+	}, {
+		"id": 2,
+		"text": "Nie",
+		"isCorrect": "false"
+	}]
+},
+
+{
+	"id": 22,
+	"text": "Wybierz wartość napięcia, które nie występuje w maszynie. [I SERIA]",
+	"time" : 30,
+	"answers": [{
+		"id": 1,
+		"text": "9 V",
+		"isCorrect": "false"
+	}, {
+		"id": 2,
+		"text": "5 V",
+		"isCorrect": "false"
+	}, {
+		"id": 3,
+		"text": "24 V",
+		"isCorrect": "false"
+	}, {
+		"id": 4,
+		"text": "19 V",
+		"isCorrect": "true"
+	}]
+},
+
+{
+	"id": 23,
+	"text": "Żaden z zamków w module centralnym nie jest widoczny w zakładce 'Get lockers status' (Service Application) podczas skanowania. Wiązka zamkowa jest sprawna, prawidłowo podłączona do ALC oraz zamków, liczba zamków w ustawieniach extendera (expandera) jest prawidłowa. Co jest najbardziej prawdopodobną przyczyną? [NEW FM]",
+	"time" : 30,
+	"answers": [{
+		"id": 1,
+		"text": "Uszkodzony ALC",
+		"isCorrect": "false"
+	}, {
+		"id": 2,
+		"text": "Nieprawidłowy config ALC",
+		"isCorrect": "false"
+	}, {
+		"id": 3,
+		"text": "Nieaktualna wersja Service Application",
+		"isCorrect": "false"
+	}, {
+		"id": 4,
+		"text": "Uszkodzony jeden lub kilka zamków w module centralnym",
+		"isCorrect": "true"
+	}]
+},
+
+{
+	"id": 24,
+	"text": "Po aktualizacji FW sterownika Micro XLL grzałka oraz wentylatory są cały czas włączone, odczyty temperatur są nieprawidłowe. Co jest najbardziej prawdopodobną przyczyną?",
+	"time" : 30,
+	"answers": [{
+		"id": 1,
+		"text": "Został wybrany nieprawidłowy firmware",
+		"isCorrect": "true"
+	}, {
+		"id": 2,
+		"text": "Uszkodzone wszystkie czujniki temperatur",
+		"isCorrect": "false"
+	}, {
+		"id": 3,
+		"text": "Uszkodzony jeden z czujników temperatur",
+		"isCorrect": "false"
+	}, {
+		"id": 4,
+		"text": "Uszkodzony sterownik Micro XLL",
+		"isCorrect": "false"
+	}]
+},
+
+{
+	"id": 25,
+	"text": "Co oznacza kod *********** (11)?",
+	"time" : 30,
+	"answers": [{
+		"id": 1,
+		"text": "Maszyna zablokowana z poziomu ILSA",
+		"isCorrect": "true"
+	}, {
+		"id": 2,
+		"text": "Maszyna zablokowana w konsoli",
+		"isCorrect": "false"
+	}, {
+		"id": 3,
+		"text": "Nieautoryzowane otwarcie skrytek",
+		"isCorrect": "false"
+	}, {
+		"id": 4,
+		"text": "Niski poziom napięcia akumulatora",
+		"isCorrect": "false"
+	}]
+},
+
+{
+	"id": 26,
+	"text": "Po wymianie LCD controller'a data i godzina są nieprawidłowe. W jaki sposób można wymusić synchronizację daty i czasu w LCD controller’a?",
+	"time" : 30,
+	"answers": [{
+		"id": 1,
+		"text": "Kontaktując się ze wsparciem technicznym",
+		"isCorrect": "true"
+	}, {
+		"id": 2,
+		"text": "W panelu konfiguracyjnym ACTIS’a",
+		"isCorrect": "false"
+	}, {
+		"id": 3,
+		"text": "W panelu konfiguracyjnym LCD controller’a",
+		"isCorrect": "false"
+	}]
+},
+
+{
+	"id": 27,
+	"text": "Jedziesz samochodem służbowym w kierunku maszyny typu Paczkomat®. W pewnym momencie zauważasz na desce rozdzielczej kontrolkę 'check engine'. Co robisz?",
+	"time" : 30,
+	"answers": [{
+		"id": 1,
+		"text": "Zatrzymuję się w bezpiecznym miejscu i sam podejmuję próbę naprawy",
+		"isCorrect": "false"
+	}, {
+		"id": 2,
+		"text": "Skoro silnik pracuje to nie przejmuję się tym i jadę dalej",
+		"isCorrect": "false"
+	}, {
+		"id": 3,
+		"text": "Niezwłocznie się zatrzymuję, dzwonię do firmy leasingowej w celu ustalenia dalszego postępowania, informuję lidera.",
+		"isCorrect": "true"
+	}]
+}, 
+
+{
+	"id": 28,
+	"text": "Jak zachowasz się w sytuacji kiedy klient będzie się awanturował i będzie w stosunku do Ciebie wulgarny?",
+	"time" : 30,
+	"answers": [{
+		"id": 1,
+		"text": "Będę uprzejmy i postaram się załagodzić sytuację oraz jeżeli będzie taka możliwość to umożliwię klientowi odbiór paczki",
+		"isCorrect": "true"
+	}, {
+		"id": 2,
+		"text": "Wdam się w dyskusję z klientem w celu ustalenia źródła problemu",
+		"isCorrect": "false"
+	}, {
+		"id": 3,
+		"text": "Użyję w stosunku do klienta gazu pieprzowego",
+		"isCorrect": "false"
+	}]
+},
+
+{
+	"id": 29,
+	"text": "Jak wygląda proces rozliczenia faktury zakupowej?",
+	"time" : 45,
+	"answers": [{
+		"id": 1,
+		"text": "W pierwszej kolejności należy założyć zapotrzebowanie w zakładce 'zasoby' i wysłać do zatwierdzenia. Jeżeli zostanie zatwierdzone należy dodać fakturę, uzupełnić wszystkie wymagane pola i wysłać do weryfikacji. Przed końcem miesiąca należy wysłać oryginał faktury oraz wyciąg z karty płatniczej do biura za pomocą wcześniej wygenerowanego kodu nadania.",
+		"isCorrect": "false"
+	}, {
+		"id": 2,
+		"text": "W pierwszej kolejności należy założyć zapotrzebowanie w zakładce 'zasoby' i wysłać do zatwierdzenia. Jeżeli zostanie zatwierdzone należy dodać fakturę, uzupełnić wszystkie wymagane pola i wysłać do weryfikacji. Przed końcem miesiąca należy wysłać oryginał faktury do biura za pomocą wcześniej wygenerowanego kodu nadania.",
+		"isCorrect": "true"
+	}, {
+		"id": 3,
+		"text": "W pierwszej kolejności należy dodać fakturę, uzupełnić wszystkie wymagane pola i wysłać do weryfikacji. Jeżeli zostanie zatwierdzona należy złożyć zapotrzebowanie uwzględniając kwotę na fakturze. Przed końcem miesiąca należy wysłać oryginał faktury do biura za pomocą wcześniej wygenerowanego kodu nadania.",
+		"isCorrect": "false"
+	}, {
+		"id": 4,
+		"text": "W pierwszej kolejności należy dodać fakturę, uzupełnić wszystkie wymagane pola i wysłać do weryfikacji. Jeżeli zostanie zatwierdzona należy złożyć zapotrzebowanie uwzględniając kwotę na fakturze. Przed końcem miesiąca należy wysłać zdjęcie faktury mailem do biura.",
+		"isCorrect": "false"
+	}]
+},
+
+{
+	"id": 30,
+	"text": "W zapotrzebowaniu uwzględniamy kwotę brutto czy netto zakupionej rzeczy?",
+	"time" : 30,
+	"answers": [{
+		"id": 1,
+		"text": "Brutto",
+		"isCorrect": "false"
+	}, {
+		"id": 2,
+		"text": "Netto",
+		"isCorrect": "true"
+	}]
+},
+
+{
+	"id": 31,
+	"text": "Do którego złącza powinien być podłączony czujnik jakości powietrza Airly? [NEW FM]",
+	"time" : 45,
+	"image": "http://testwiedzy.edu.pl/static/media/00231.jpg" ,
+	"answers": [{
+		"id": 1,
+		"text": "Do żadnego",
+		"isCorrect": "true"
+	}, {
+		"id": 2,
+		"text": "RS232 #2",
+		"isCorrect": "false"
+	}, {
+		"id": 3,
+		"text": "#W3",
+		"isCorrect": "false"
+	}, {
+		"id": 4,
+		"text": "3W5",
+		"isCorrect": "false"
+	}]
+},
+
+{
+	"id": 32,
+	"text": "Napięciem o jakiej wartości może być wysterowany poniższy przekaźnik?",
+	"time" : 45,
+	"image": "http://testwiedzy.edu.pl/static/media/00232.jpg" ,
+	"answers": [{
+		"id": 1,
+		"text": "8 A",
+		"isCorrect": "false"
+	}, {
+		"id": 2,
+		"text": "250 V",
+		"isCorrect": "false"
+	}, {
+		"id": 3,
+		"text": "12 V",
+		"isCorrect": "true"
+	}, {
+		"id": 4,
+		"text": "12 A",
+		"isCorrect": "false"
+	}]
+},
+
+{
+	"id": 33,
+	"text": "Której serii dotyczy fragment poniższego schamatu?",
+	"time" : 45,
+	"image": "http://testwiedzy.edu.pl/static/media/00233.jpg" ,
+	"answers": [{
+		"id": 1,
+		"text": "II serii",
+		"isCorrect": "false"
+	}, {
+		"id": 2,
+		"text": "I serii",
+		"isCorrect": "true"
+	}, {
+		"id": 3,
+		"text": "III serii",
+		"isCorrect": "false"
+	}, {
+		"id": 4,
+		"text": "V serii",
+		"isCorrect": "false"
+	}]
+},
+
+{
+	"id": 34,
+	"text": "Co jest podłączone do przewodów W125A i W125B pod daszkiem?",
+	"time" : 45,
+	"image": "http://testwiedzy.edu.pl/static/media/00234.jpg" ,
+	"answers": [{
+		"id": 1,
+		"text": "Zasilanie oświetlenia nad modułem centralnym",
+		"isCorrect": "true"
+	}, {
+		"id": 2,
+		"text": "Zasilanie kamer",
+		"isCorrect": "false"
+	}, {
+		"id": 3,
+		"text": "Sonda zmierzchowa",
+		"isCorrect": "false"
+	}, {
+		"id": 4,
+		"text": "Czujnik temperatury",
+		"isCorrect": "false"
+	}]
+},
+
+{
+	"id": 35,
+	"text": "Jak zachowają się drzwi skrytek w module 2R po podniesieniu prawej strony modułu 1R?",
+	"time" : 45,
+	"image": "http://testwiedzy.edu.pl/static/media/00235.jpg" ,
+	"answers": [{
+		"id": 1,
+		"text": "Opadną",
+		"isCorrect": "true"
+	}, {
+		"id": 2,
+		"text": "Podniosą się",
+		"isCorrect": "false"
+	}]
+},
+
+{
+	"id": 36,
+	"text": "Jeden z przewodów przełącznika krańcowego powinien być podłączony do",
+	"time" : 45,
+	"image": "http://testwiedzy.edu.pl/static/media/00236.jpg" ,
+	"answers": [{
+		"id": 1,
+		"text": "Drugiego złącza w Power Module",
+		"isCorrect": "false"
+	}, {
+		"id": 2,
+		"text": "Bloku rozdzielczego nad Power Module, na którym występuje dodatni potencjał i napięcie 13.8V",
+		"isCorrect": "true"
+	}, {
+		"id": 3,
+		"text": "Bloku rozdzielczego nad Power Module, na którym występuje ujemny potencjał",
+		"isCorrect": "false"
+	}, {
+		"id": 4,
+		"text": "Bloku rozdzielczego nad Power Module, na którym występuje dodatni potencjał i napięcie 12V",
+		"isCorrect": "false"
+	}]
+},
+
+{
+	"id": 37,
+	"text": "Wybierz nieprawidłowo zaprogramowany zamek",
+	"time" : 45,
+	"image": "http://testwiedzy.edu.pl/static/media/00237.jpg" ,
+	"answers": [{
+		"id": 1,
+		"text": "D7-L-33",
+		"isCorrect": "false"
+	}, {
+		"id": 2,
+		"text": "B10-L-18",
+		"isCorrect": "true"
+	}, {
+		"id": 3,
+		"text": "A1-L-2",
+		"isCorrect": "false"
+	}, {
+		"id": 4,
+		"text": "B2-S-10",
+		"isCorrect": "false"
+	}]
+},
+
+{
+	"id": 38,
+	"text": "Działanie jakiego programu przedstawia poniższy zrzut? Podaj nazwę.",
+	"time" : 45,
+	"image": "http://testwiedzy.edu.pl/static/media/00238.jpg" ,
+	"answers": [{
+		"id": 1,
+		"text": "Service Application",
+		"isCorrect": "false"
+	}, {
+		"id": 2,
+		"text": "WinProLadder",
+		"isCorrect": "false"
+	}, {
+		"id": 3,
+		"text": "Bcrconfig",
+		"isCorrect": "false"
+	}, {
+		"id": 4,
+		"text": "Module flipper",
+		"isCorrect": "true"
+	}]
+},
+
+{
+	"id": 39,
+	"text": "Do których styków jest podłączone wejście zasilania?",
+	"time" : 45,
+	"image": "http://testwiedzy.edu.pl/static/media/00239.jpg" ,
+	"answers": [{
+		"id": 1,
+		"text": "Do styku 3 oraz 4",
+		"isCorrect": "true"
+	}, {
+		"id": 2,
+		"text": "Do styku 3 oraz 5",
+		"isCorrect": "false"
+	}, {
+		"id": 3,
+		"text": "Do styku 1 oraz 3",
+		"isCorrect": "false"
+	}, {
+		"id": 4,
+		"text": "Do żadnego ze styków",
+		"isCorrect": "false"
+	}]
+},
+
+{
+	"id": 40,
+	"text": "Do czego służy element znajdujący się na poniższym zdjęciu i w jakiej serii występuje?",
+	"time" : 45,
+
+	"image": "http://testwiedzy.edu.pl/static/media/00240.jpg" ,
+	"answers": [{
+		"id": 1,
+		"text": "Płytka zamka, występuje w I serii",
+		"isCorrect": "false"
+	}, {
+		"id": 2,
+		"text": "Płytka rozszerzeń routera IWS, występuje w I serii",
+		"isCorrect": "false"
+	}, {
+		"id": 3,
+		"text": "Płytka termostatu, występuje w I serii",
+		"isCorrect": "false"
+	}, {
+		"id": 4,
+		"text": "Przetwornica, występuje w I serii",
+		"isCorrect": "true"
+	}]
+}
+]

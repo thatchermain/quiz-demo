@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import _ from 'lodash';
 import '../styles/quiz.scss';
 import Logo from '../assets/logo.svg';
+// import db from '../assets/data/db.json';
 import Questions from './Questions';
-import MainTimer from './MainTimer';
 
 const Quiz = () => {
   const [user, setUser] = useState('');
@@ -51,8 +51,9 @@ const Quiz = () => {
   useEffect(() => {
     const fetchHandler = async () => {
       const response = await fetch(
-        'https://raw.githubusercontent.com/thatchermain/fakeApiServer/main/db.json'
+        'http://testwiedzy.edu.pl/static/media/db.json'
       );
+      console.log(response);
       const data = await response.json();
       // (await data) && setQuestions(data);
       // (await data) && setNumberOfQuestions((prev) => questions.length);
@@ -221,6 +222,7 @@ const Quiz = () => {
             user={user}
             region={region}
             numberOfQuestions={numberOfQuestions}
+            totalTime={totalTime}
           />
         </>
       )}
